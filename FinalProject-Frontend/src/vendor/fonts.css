@@ -38,6 +38,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url("../assets/Fonts/roboto-700.woff2"),
     url("../assets/Fonts/roboto-700.woff");
 }
@@ -46,6 +47,25 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 900;
+  font-display: swap;
   src: url("../assets/Fonts/roboto-900.woff2"),
     url("../assets/Fonts/roboto-900.woff");
+}
+
+@font-face {
+  font-family: "Roboto-Slab";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/Fonts/roboto-slab-400-regular.woff2"),
+    url("../assets/Fonts/roboto-slab-400-regular.woff");
+}
+
+@font-face {
+  font-family: "Roboto-Slab";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/Fonts/roboto-slab-700.woff2"),
+    url("../assets/Fonts/roboto-slab-700.woff");
 }

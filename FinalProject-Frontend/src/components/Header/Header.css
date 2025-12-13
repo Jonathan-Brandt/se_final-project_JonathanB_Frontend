@@ -3,14 +3,12 @@
   align-items: center;
   text-decoration: none;
   background: none;
-  max-height: 80px;
   max-width: 1440px;
   padding-top: 30px;
   padding-bottom: 26px;
   padding-left: 104px;
   padding-right: 104px;
-  border-bottom: 1px;
-  border-color: #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
 }
 
 .header__logo {

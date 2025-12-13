@@ -1,11 +1,13 @@
 .page {
-  background-color: white;
+  background-image: url("../../assets/main-page__backgroundImage.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  max-height: 576px;
+  max-width: 1440px;
   max-width: 1440px;
 }
 
 .page__content {
-  background-color: white;
-  background-image: url("../../assets/main-page__bckgrnd.jpg");
-  max-width: 1440px;
   margin: 0 auto;
+  overflow: hidden;
 }
