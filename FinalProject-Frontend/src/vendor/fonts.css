@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/Fonts/inter-400-regular.woff2"),
+    url("../assets/Fonts/inter-400-regular.woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/Fonts/inter-500.woff2"),
+    url("../assets/Fonts/inter-500.woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/Fonts/roboto-400-regular.woff2"),
+    url("../assets/Fonts/roboto-400-regular.woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/Fonts/roboto-500.woff2"),
+    url("../assets/Fonts/roboto-500.woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/Fonts/roboto-700.woff2"),
+    url("../assets/Fonts/roboto-700.woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../assets/Fonts/roboto-900.woff2"),
+    url("../assets/Fonts/roboto-900.woff");
+}
