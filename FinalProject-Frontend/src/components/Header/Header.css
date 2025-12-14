@@ -9,6 +9,7 @@
   padding-left: 104px;
   padding-right: 104px;
   border-bottom: 1px solid #c4c4c4;
+  position: relative;
 }
 
 .header__logo {

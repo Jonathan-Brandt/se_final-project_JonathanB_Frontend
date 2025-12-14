@@ -6,10 +6,11 @@ function App() {
   return (
     <>
       <div className="page">
-        <div className="page__content">
-          <Header></Header>
-          <MainPage></MainPage>
+        <div className="content__cover">
+          <div className="page__content"></div>
         </div>
+        <Header></Header>
+        <MainPage></MainPage>
       </div>
     </>
   );
