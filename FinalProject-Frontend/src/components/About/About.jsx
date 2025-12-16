@@ -27,7 +27,6 @@ function About() {
               as Vite to create fully functional web applications
             </p>
           </div>
-          <div className="footer__links-container"></div>
         </div>
       </div>
     </>

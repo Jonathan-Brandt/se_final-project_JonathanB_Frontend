@@ -14,4 +14,36 @@
   line-height: 22px;
   color: #b6bcbf;
   margin-left: 104px;
+  margin-top: 30px;
+}
+
+.footer__links-container {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding-top: 30px;
+}
+
+.footer__home {
+  margin: 0 auto;
+  margin-right: 40px;
+}
+
+.footer__TripleTen-link {
+  margin: 0 auto;
+  margin-right: 40px;
+}
+
+.footer__ghLogo {
+  width: 24px;
+  height: 24px;
+  margin-right: 24px;
+}
+
+.footer__lnkdInLogo {
+  width: 24px;
+  height: 24px;
+  margin-right: 106px;
 }
