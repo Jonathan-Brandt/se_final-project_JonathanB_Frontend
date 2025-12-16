@@ -1,0 +1,17 @@
+.footer {
+  width: 1440px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__copyright {
+  width: 433px;
+  height: 22px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #b6bcbf;
+  margin-left: 104px;
+}

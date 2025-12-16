@@ -1,0 +1,62 @@
+.about-page {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  max-height: 624px;
+}
+
+.about-page__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-page__text-container {
+  margin-right: 216px;
+}
+
+.author-img__container {
+  display: flex;
+  height: 400px;
+  width: 400px;
+  border-radius: 1000px;
+  overflow: hidden;
+
+  margin-right: 56px;
+  margin-bottom: 80px;
+  justify-content: center;
+}
+
+.author__image {
+  height: 464px;
+  width: 464px;
+}
+
+.about-page__header {
+  width: 600px;
+  height: 46px;
+  font-family: "Roboto-Slab", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.about-page__subtext {
+  width: 600px;
+  height: 120px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 1px;
+}
+
+.about-page__second-subtext {
+  width: 600px;
+  height: 120px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  position: relative;
+}
