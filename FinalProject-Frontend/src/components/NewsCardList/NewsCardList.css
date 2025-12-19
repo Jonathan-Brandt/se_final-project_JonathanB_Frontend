@@ -1,0 +1,17 @@
+.newscardlist {
+  width: 1440px;
+  height: 974px;
+  background-color: #f5f6f7;
+  overflow: hidden;
+}
+
+.showmore__button {
+  width: 288px;
+  height: 64px;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  border-radius: 80px;
+  border-style: none;
+  cursor: pointer;
+}

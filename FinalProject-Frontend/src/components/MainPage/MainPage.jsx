@@ -16,7 +16,9 @@ function MainPage() {
               className="search-bar__input"
               placeholder="Enter topic"
             />
-            <button className="search-button">Search</button>
+            <button className="search-button" type="button">
+              Search
+            </button>
           </form>
         </div>
       </main>
