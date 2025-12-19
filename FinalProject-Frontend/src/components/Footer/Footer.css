@@ -29,11 +29,21 @@
 .footer__home {
   margin: 0 auto;
   margin-right: 40px;
+  text-decoration: none;
+}
+
+.footer__home:active {
+  text-decoration: none;
 }
 
 .footer__TripleTen-link {
   margin: 0 auto;
   margin-right: 40px;
+  text-decoration: none;
+}
+
+.footer__TripleTen-link:active {
+  text-decoration: none;
 }
 
 .footer__ghLogo {
