@@ -69,3 +69,11 @@
   src: url("../assets/Fonts/roboto-slab-700.woff2"),
     url("../assets/Fonts/roboto-slab-700.woff");
 }
+
+@font-face {
+  font-family: "Source-Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/Fonts/SourceSans3-Black.ttf");
+}

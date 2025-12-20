@@ -1,0 +1,77 @@
+.news-card {
+  max-width: 400px;
+  height: 576px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.news-card__img {
+  max-width: 400px;
+  max-height: 272px;
+  display: flex;
+  justify-content: center;
+}
+
+.news-card__date {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 18px;
+  height: 24px;
+  width: 155px;
+  color: #b6bcbf;
+  margin-left: 24px;
+}
+
+.news-card__title {
+  font-size: 26px;
+  font-family: "Roboto-slab";
+  font-weight: 400;
+  max-width: 352px;
+  max-height: 60px;
+  margin-left: 24px;
+}
+
+.news-card__body-txt {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 352px;
+  max-height: 110px;
+  margin-left: 24px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.news-card__footer {
+  color: #b6bcbf;
+  text-transform: capitalize;
+  font-family: "Roboto-Slab", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 24px;
+}
+
+.save-card__button {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../assets/save-post__button.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  border-radius: 8px;
+  border-style: none;
+  position: absolute;
+  margin-left: 336px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.save-card__button:hover {
+  opacity: 0.5;
+}
