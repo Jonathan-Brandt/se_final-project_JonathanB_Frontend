@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "../Header/Header";
@@ -6,6 +7,8 @@ import MainPage from "../MainPage/MainPage";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
   const cardData = [
@@ -20,11 +23,38 @@ function App() {
     },
   ];
 
+  //states and effects
+
+  const [activeModal, setActiveModal] = useState("");
+
+  // handlers
+
+  const onLoginClick = () => {
+    setActiveModal("login-user");
+  };
+
+  const onSignupClick = () => {
+    setActiveModal("new-user");
+  };
+
+  const onSecondButtonClick = () => {
+    if (activeModal === "login-user") {
+      setActiveModal("new-user");
+    }
+    if (activeModal === "new-user") {
+      setActiveModal("login-user");
+    }
+  };
+
+  const closeModal = () => {
+    setActiveModal("");
+  };
+
   return (
     <div className="page">
       <div className="page__content">
         <div className="content__cover"></div>
-        <Header></Header>
+        <Header onLoginClick={onLoginClick} onSignupClick={onSignupClick} />
         <Routes>
           <Route path="/" element={<MainPage />} />
         </Routes>
@@ -42,6 +72,21 @@ function App() {
         <About></About>
         <Footer></Footer>
       </div>
+      <LoginModal
+        activeModal={activeModal}
+        isOpen={activeModal === "login-user"}
+        loginClick={onLoginClick}
+        onSecondButtonClick={onSecondButtonClick}
+        closeModal={closeModal}
+      />
+
+      <RegisterModal
+        activeModal={activeModal}
+        isOpen={activeModal === "new-user"}
+        registerClickClick={onSignupClick}
+        onSecondButtonClick={onSecondButtonClick}
+        closeModal={closeModal}
+      />
     </div>
   );
 }

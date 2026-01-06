@@ -7,7 +7,11 @@ function NewsCard({ cardImg, cardDate, cardTitle, cardBody, cardSource }) {
         <div className="news-card__img-container">
           <button className="save-card__button" type="button"></button>
 
-          <img src={cardImg} alt="crab :)" className="news-card__img" />
+          <img
+            src={cardImg}
+            alt="news card: image"
+            className="news-card__img"
+          />
         </div>
         <div className="news-card__header">
           <h2 className="news-card__date">{cardDate}</h2>
