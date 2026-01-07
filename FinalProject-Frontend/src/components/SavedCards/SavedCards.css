@@ -1,0 +1,61 @@
+.header {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background: none;
+  max-width: 1440px;
+  height: 80px;
+
+  padding-left: 104px;
+  padding-right: 104px;
+  border-bottom: 1px solid #c4c4c4;
+  position: relative;
+}
+
+.header__logo {
+  width: 200px;
+  height: 20px;
+}
+
+.header__home-button {
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  border: none;
+  margin-left: 765px;
+  margin-right: 13px;
+  cursor: pointer;
+}
+
+.header__saved-articles-btn {
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  width: 166px;
+  height: 36px;
+  border-radius: 100px;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+}
+
+.header__signin-button:hover {
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.header__home-button:hover {
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.header__logo:hover {
+  opacity: 0.5;
+  transition: 0.3s;
+  cursor: pointer;
+}

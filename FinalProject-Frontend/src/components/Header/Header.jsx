@@ -5,9 +5,10 @@ function Header({ onLoginClick }) {
   return (
     <>
       <header className="header">
-        <img src={logo} alt="header__logo" className="header__logo" />
-
-        <button className="header__home-button">Home</button>
+        <Link to="/">
+          <img src={logo} alt="header__logo" className="header__logo" />
+          <button className="header__home-button">Home</button>
+        </Link>
         <button className="header__signin-button" onClick={onLoginClick}>
           Signin
         </button>

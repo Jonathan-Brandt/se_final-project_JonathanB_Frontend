@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Header from "../Header/Header";
 import MainPage from "../MainPage/MainPage";
+import SavedCardsList from "../SavedCards/SavedCards";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
