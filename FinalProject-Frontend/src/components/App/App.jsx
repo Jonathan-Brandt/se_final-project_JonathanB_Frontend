@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+
 import { Route, Routes } from "react-router-dom";
 
 import Header from "../Header/Header";
@@ -21,6 +22,7 @@ function App() {
       title: "Placeholder text for Jimbo the crab",
       body: "Ah jeez! It's Jimbo the placeholder crab! That's right, this absolutely meaningless crustacean is on your door steps just straight ding dong ditching this news card into absolute oblivion. At least until I get the api stuf working!",
       source: "joemama",
+      keywords: "Crabs n stuff",
     },
   ];
 
@@ -71,6 +73,17 @@ function App() {
         ))}
 
         <About></About>
+        {cardData.map((card) => (
+          <SavedCardsList
+            key={card.id}
+            cardImg={card.imageUrl}
+            cardDate={card.date}
+            cardTitle={card.title}
+            cardBody={card.body}
+            cardSource={card.source}
+          />
+        ))}
+
         <Footer></Footer>
       </div>
       <LoginModal

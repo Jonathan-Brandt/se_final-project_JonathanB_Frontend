@@ -1,11 +1,10 @@
-.header {
+.saved-cards__header {
   display: flex;
   align-items: center;
   text-decoration: none;
   background: none;
   max-width: 1440px;
   height: 80px;
-
   padding-left: 104px;
   padding-right: 104px;
   border-bottom: 1px solid #c4c4c4;
@@ -42,6 +41,49 @@
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
+}
+
+.text__container {
+  width: 1440px;
+  height: 294px;
+  margin-left: 104px;
+}
+
+.saved-articles__header-txt {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 28px;
+  color: #1a1b2280;
+}
+
+.saved-articles__txt {
+  width: 530px;
+  height: 92px;
+  font-family: "Roboto-Slab", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.saved-articles__kywrds-lst {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.keywords {
+  font-weight: bold;
+}
+/* fix this max height later */
+.saved-articles__list {
+  width: 1440px;
+  height: 1292px;
+  background-color: #f5f6f7;
+  padding-left: 104px;
+  padding-top: 64px;
 }
 
 .header__signin-button:hover {

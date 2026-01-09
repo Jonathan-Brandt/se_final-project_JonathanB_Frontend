@@ -1,4 +1,5 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
 import logo from "../../assets/NewsExplorer.svg";
 
 function Header({ onLoginClick }) {

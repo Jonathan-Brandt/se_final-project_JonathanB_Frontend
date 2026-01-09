@@ -70,4 +70,10 @@
   font-size: 18px;
   color: white;
   position: relative;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #347eff;
+  transition: 0.3s;
 }
