@@ -6,13 +6,18 @@ function Header({ onLoginClick }) {
   return (
     <>
       <header className="header">
-        <Link to="/">
-          <img src={logo} alt="header__logo" className="header__logo" />
-          <button className="header__home-button">Home</button>
-        </Link>
-        <button className="header__signin-button" onClick={onLoginClick}>
-          Signin
-        </button>
+        <img src={logo} alt="header__logo" className="header__logo" />
+
+        <div className="header__bttn-container">
+          <Link to="/">
+            {" "}
+            <button className="header__home-button">Home</button>
+          </Link>
+
+          <button className="header__signin-button" onClick={onLoginClick}>
+            Signin
+          </button>
+        </div>
       </header>
     </>
   );
