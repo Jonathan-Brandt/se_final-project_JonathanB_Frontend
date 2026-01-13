@@ -42,7 +42,7 @@ function RegisterModal({
     <ModalWithForm
       title="Sign up"
       buttonText="Sign up"
-      secondButtonText="Sign in"
+      secondButtonText=" Sign in"
       closeModal={closeModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}

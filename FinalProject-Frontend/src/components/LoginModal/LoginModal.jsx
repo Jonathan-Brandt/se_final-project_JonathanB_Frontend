@@ -40,7 +40,7 @@ function LoginModal({
     <ModalWithForm
       title="Sign in"
       buttonText="Sign in"
-      secondButtonText={"or Sign up"}
+      secondButtonText={" Sign up"}
       closeModal={closeModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
@@ -54,7 +54,7 @@ function LoginModal({
           type="Email"
           className="modal__input"
           id="email"
-          placeholder="email"
+          placeholder="Enter email"
           required
           onChange={handleEmailChange}
           value={email}
@@ -66,7 +66,7 @@ function LoginModal({
           type="text"
           className="modal__input"
           id="login-password"
-          placeholder="password"
+          placeholder="Enter password"
           required
           onChange={handlePasswordChange}
           value={password}

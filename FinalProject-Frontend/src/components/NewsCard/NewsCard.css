@@ -74,5 +74,11 @@
 }
 
 .save-card__button:hover {
-  opacity: 0.5;
+  transition: 0.3s;
+  background-image: url("../../assets/save-bttn-hover.svg");
+}
+
+.saved-card {
+  transition: 0.3s;
+  background-image: url("../../assets/marked-card.svg");
 }

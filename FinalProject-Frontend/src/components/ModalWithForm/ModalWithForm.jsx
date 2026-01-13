@@ -31,7 +31,8 @@ function ModalWithForm({
                 className="modal__switch"
                 onClick={onSecondButtonClick}
               >
-                {secondButtonText}
+                {" "}
+                or <span className="switch-txt">{secondButtonText}</span>
               </button>
             )}
           </div>
