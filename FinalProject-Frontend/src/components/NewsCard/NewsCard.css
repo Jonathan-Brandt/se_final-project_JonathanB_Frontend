@@ -82,3 +82,43 @@
   transition: 0.3s;
   background-image: url("../../assets/marked-card.svg");
 }
+
+@media screen and (max-width: 768px) {
+  .news-card {
+    max-width: 224px;
+    max-height: 420px;
+  }
+
+  .news-card__img-container {
+    max-width: 224px;
+    max-height: 150px;
+  }
+
+  .news-card__img {
+    max-width: 224px;
+    max-height: 150px;
+  }
+
+  .news-card__date {
+    font-size: 16px;
+    width: 147px;
+    height: 24px;
+  }
+
+  .news-card__title {
+    width: 192px;
+    height: 72px;
+    font-size: 22px;
+  }
+
+  .news-card__body-txt {
+    font-size: 16px;
+    width: 192px;
+    height: 88px;
+  }
+
+  .save-card__button {
+    margin-top: 8px;
+    margin-left: 176px;
+  }
+}

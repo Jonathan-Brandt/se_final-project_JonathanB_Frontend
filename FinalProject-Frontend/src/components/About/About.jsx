@@ -15,6 +15,7 @@ function About() {
           </div>
           <div className="about-page__text-container">
             <h1 className="about-page__header">About the author</h1>
+            {/* you gotta re-writethis garbage later lol */}
             <p className="about-page__subtext">
               My name is Jonathan Brandt, and I am an aspiring Fullstack
               Software Engineer. I fell in love with the field after committing

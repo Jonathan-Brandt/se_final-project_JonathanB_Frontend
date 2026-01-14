@@ -13,13 +13,6 @@ function SavedCardsList({
   return (
     // would be easier if I just IMPORT THE HEADER lol
     <>
-      <header className="saved-cards__header">
-        <Link to="/">
-          <img src={logo} alt="header__logo" className="header__logo" />
-          <button className="header__home-button">Home</button>
-        </Link>
-        <button className="header__saved-articles-btn">Saved articles</button>
-      </header>
       <div className="saved-articles__top">
         <div className="text__container">
           <p className="saved-articles__header-txt">Saved articles</p>
@@ -41,7 +34,7 @@ function SavedCardsList({
           cardSource={cardSource}
         ></NewsCard>
       </div>
-      <footer className="footer"></footer>
+      {/* import the footer here too, doofus */}
     </>
   );
 }

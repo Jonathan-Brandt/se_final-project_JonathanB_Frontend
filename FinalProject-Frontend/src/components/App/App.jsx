@@ -29,6 +29,7 @@ function App() {
   //states and effects
 
   const [activeModal, setActiveModal] = useState("");
+  const [activePage, setActivePage] = useState("");
 
   // handlers
 
@@ -71,8 +72,8 @@ function App() {
             cardSource={card.source}
           />
         ))}
-
         <About></About>
+        <Footer></Footer>{" "}
         {cardData.map((card) => (
           <SavedCardsList
             key={card.id}
@@ -83,8 +84,6 @@ function App() {
             cardSource={card.source}
           />
         ))}
-
-        <Footer></Footer>
       </div>
       <LoginModal
         activeModal={activeModal}

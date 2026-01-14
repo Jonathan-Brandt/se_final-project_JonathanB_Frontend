@@ -75,6 +75,7 @@
     height: 66px;
     padding-left: 40px;
     padding-right: 40px;
+    gap: 200px;
   }
 
   .header__logo {

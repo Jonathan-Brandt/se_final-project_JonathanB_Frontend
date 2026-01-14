@@ -60,3 +60,35 @@
   letter-spacing: 1px;
   position: relative;
 }
+
+@media screen and (max-width: 768px) {
+  .about-page {
+    max-width: 768px;
+    max-height: 354px;
+  }
+
+  .author-img__container {
+    height: 232px;
+    width: 232px;
+    margin-right: 32px;
+    margin-left: 240px;
+  }
+
+  .author__image {
+    height: 232px;
+    width: 232px;
+  }
+
+  .about-page__header {
+    width: 424px;
+    height: 34px;
+    font-size: 30px;
+  }
+
+  .about-page__subtext {
+    width: 424px;
+    height: 168px;
+    overflow: hidden;
+    font-size: 18px;
+  }
+}

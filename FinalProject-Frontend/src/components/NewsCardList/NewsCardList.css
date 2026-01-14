@@ -33,11 +33,36 @@
   line-height: 24px;
   border-radius: 80px;
   border-style: none;
-  background-color: #e8e8e8;
+  background-color: white;
   cursor: pointer;
 }
 
 .showmore__button:hover {
-  opacity: 0.5;
   transition: 0.3s;
+  background-color: #e8e8e8;
+}
+
+@media screen and (max-width: 768px) {
+  .newscardlist-container {
+    width: 768px;
+    height: 654px;
+  }
+
+  .newscardlist {
+    margin-bottom: 32px;
+    margin-left: 40px;
+  }
+
+  .newscardlist__header {
+    width: 336px;
+    height: 34px;
+    font-size: 30px;
+    margin-top: 40px;
+    margin-bottom: 32px;
+    margin-left: 80px;
+  }
+
+  .showmore__button {
+    margin-left: 272px;
+  }
 }
