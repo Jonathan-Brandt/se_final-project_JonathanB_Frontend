@@ -1,7 +1,5 @@
 import "./SavedCards.css";
-import { Link } from "react-router-dom";
 import NewsCard from "../NewsCard/NewsCard";
-import logo from "../../assets/NewsExplorer.svg";
 
 function SavedCardsList({
   cardImg,

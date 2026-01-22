@@ -63,3 +63,34 @@
     height: 912px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .saved-articles__list {
+    width: 320px;
+    max-height: 2726px;
+    padding-left: 16px;
+    padding-bottom: 13px;
+    padding-top: 24px;
+  }
+
+  .saved-articles__header-txt {
+    width: 288px;
+    height: 24px;
+    margin-bottom: 16px;
+  }
+
+  .saved-articles__txt {
+    height: 68px;
+    width: 268px;
+  }
+
+  .saved-articles__kywrds-lst {
+    width: 288px;
+    height: 48px;
+  }
+
+  .text__container {
+    margin-left: 16px;
+    margin-bottom: 26px;
+  }
+}

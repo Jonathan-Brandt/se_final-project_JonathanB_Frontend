@@ -57,6 +57,7 @@
   height: 24px;
   margin-right: 106px;
 }
+
 @media screen and (max-width: 768px) {
   .footer {
     width: 768px;
@@ -66,5 +67,38 @@
   .footer__copyright {
     width: 300px;
     margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    width: 320px;
+    height: 176px;
+    margin-left: 16px;
+  }
+
+  .footer__links-container {
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  .footer__ghLogo {
+    margin-left: 120px;
+  }
+
+  .footer__lnkdInLogo {
+    margin-right: 40px;
+  }
+
+  .footer__TripleTen-link {
+    position: absolute;
+    margin-top: 52px;
+  }
+  .footer__copyright {
+    width: 288px;
+    height: 22px;
+    margin-top: 132px;
+    margin-left: 0;
+    position: absolute;
   }
 }

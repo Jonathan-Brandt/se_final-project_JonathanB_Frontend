@@ -69,6 +69,14 @@
   cursor: pointer;
 }
 
+.mobile-menu__btn {
+  background: none;
+  border-style: none;
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     max-width: 100%;
@@ -79,7 +87,8 @@
   }
 
   .header__logo {
-    height: 24.8px;
+    height: 24px;
+    width: 117px;
   }
 
   .header__home-button {
@@ -90,5 +99,37 @@
   .header__signin-button {
     width: 152px;
     height: 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    max-width: 320px;
+    max-height: 56px;
+    gap: 136px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .header__logo {
+    height: 24px;
+    width: 117px;
+  }
+
+  .header__home-button {
+    display: none;
+  }
+
+  .header__signin-button {
+    display: none;
+  }
+
+  .header__bttn-container {
+    gap: 0px;
+  }
+
+  .mobile-menu__btn {
+    display: inline-block;
+    padding: 0;
   }
 }

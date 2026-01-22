@@ -7,7 +7,9 @@ function Footer() {
   return (
     <>
       <div className="footer">
-        <p className="footer__copyright">©Supersite, Powered by News API</p>
+        <p className="footer__copyright">
+          © 2026 Supersite, Powered by News API
+        </p>
         <div className="footer__links-container">
           <p className="footer__home">
             <Link to="/">Home</Link>

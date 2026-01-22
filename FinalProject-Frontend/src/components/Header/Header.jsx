@@ -1,5 +1,6 @@
 import "./Header.css";
 import logo from "../../assets/NewsExplorer.svg";
+import mobile from "../../assets/mobile-menu.svg";
 
 function Header({ onLoginClick }) {
   return (
@@ -12,6 +13,10 @@ function Header({ onLoginClick }) {
 
           <button className="header__signin-button" onClick={onLoginClick}>
             Signin
+          </button>
+
+          <button className="mobile-menu__btn">
+            <img src={mobile} alt="mobile menu " />
           </button>
         </div>
       </header>

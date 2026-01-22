@@ -85,18 +85,18 @@
 
 @media screen and (max-width: 768px) {
   .news-card {
-    max-width: 224px;
-    max-height: 420px;
+    width: 224px;
+    height: 420px;
   }
 
   .news-card__img-container {
-    max-width: 224px;
-    max-height: 150px;
+    width: 224px;
+    height: 150px;
   }
 
   .news-card__img {
-    max-width: 224px;
-    max-height: 150px;
+    width: 224px;
+    height: 150px;
   }
 
   .news-card__date {
@@ -120,5 +120,56 @@
   .save-card__button {
     margin-top: 8px;
     margin-left: 176px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .news-card {
+    width: 288px;
+    height: 440px;
+  }
+
+  .news-card__img-container {
+    width: 288px;
+    height: 196px;
+  }
+
+  .news-card__img {
+    width: 288px;
+    height: 196px;
+  }
+
+  .news-card__date {
+    font-size: 16px;
+    width: 256px;
+    height: 24px;
+    margin-left: 16px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  .news-card__title {
+    width: 256px;
+    height: 48px;
+    font-size: 22px;
+    margin-left: 16px;
+    margin-top: 10px;
+  }
+
+  .news-card__body-txt {
+    font-size: 16px;
+    width: 256px;
+    height: 88px;
+    margin-left: 16px;
+    margin-top: 0;
+  }
+
+  .save-card__button {
+    margin-top: 16px;
+    margin-left: 232px;
+  }
+
+  .news-card__footer {
+    margin-left: 16px;
   }
 }
