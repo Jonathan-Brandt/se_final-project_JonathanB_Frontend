@@ -65,12 +65,14 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
+  position: relative;
   border-radius: 8px;
   border-style: none;
-  position: absolute;
   margin-left: 336px;
-  margin-top: 24px;
+  margin-top: 0px;
+  bottom: -58px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .save-card__button:hover {

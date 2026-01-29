@@ -1,19 +1,23 @@
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ cardImg, cardDate, cardTitle, cardBody, cardSource }) {
+function NewsCardList({ newsData }) {
   return (
     <>
       <div className="newscardlist-container">
         <h1 className="newscardlist__header">Search results</h1>
         <ul className="newscardlist">
-          <NewsCard
-            cardImg={cardImg}
-            cardDate={cardDate}
-            cardTitle={cardTitle}
-            cardBody={cardBody}
-            cardSource={cardSource}
-          ></NewsCard>
+          {newsData.map((newsData, index) => (
+            <div key={index}>
+              <NewsCard
+                cardImg={newsData.urlToImage}
+                cardDate={newsData.publishedAt}
+                cardTitle={newsData.title}
+                cardBody={newsData.content}
+                cardSource={newsData.source.name}
+              />
+            </div>
+          ))}
         </ul>
         <button className="showmore__button" type="button">
           Show more

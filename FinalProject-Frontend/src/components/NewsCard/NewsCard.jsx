@@ -3,10 +3,9 @@ import "./NewsCard.css";
 function NewsCard({ cardImg, cardDate, cardTitle, cardBody, cardSource }) {
   return (
     <>
+      <button className="save-card__button" type="button"></button>
       <div className="news-card">
         <div className="news-card__img-container">
-          <button className="save-card__button" type="button"></button>
-
           <img
             src={cardImg}
             alt="news card: image"

@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 import Header from "../Header/Header";
 import MainPage from "../MainPage/MainPage";
@@ -9,27 +10,33 @@ import SavedCardsList from "../SavedCards/SavedCards";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import NewsCard from "../NewsCard/NewsCard";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import { getResponse, newsApiBaseUrl } from "../../utils/api";
 
 function App() {
-  const cardData = [
-    {
-      id: 1,
-      imageUrl:
-        "https://media.istockphoto.com/id/182820338/photo/blue-crab-on-dock.jpg?s=612x612&w=0&k=20&c=08bMr4A8-IV_FoaQsUSik9wc11SRCQ0wI4kGZT6JDH8=",
-      date: "December 19, 2025",
-      title: "Placeholder text for Jimbo the crab",
-      body: "Ah jeez! It's Jimbo the placeholder crab! That's right, this absolutely meaningless crustacean is on your door steps just straight ding dong ditching this news card into absolute oblivion. At least until I get the api stuf working!",
-      source: "joemama",
-      keywords: "Crabs n stuff",
-    },
-  ];
+  // simple placeholder data
+  //const cardData = [
+  //   {
+  //     id: 1,
+  //     imageUrl:
+  //       "https://media.istockphoto.com/id/182820338/photo/blue-crab-on-dock.jpg?s=612x612&w=0&k=20&c=08bMr4A8-IV_FoaQsUSik9wc11SRCQ0wI4kGZT6JDH8=",
+  //     date: "December 19, 2025",
+  //     title: "Placeholder text for Jimbo the crab",
+  //     body: "Ah jeez! It's Jimbo the placeholder crab! That's right, this absolutely meaningless crustacean is on your door steps just straight ding dong ditching this news card into absolute oblivion. At least until I get the api stuf working!",
+  //     source: "joemama",
+  //     keywords: "Crabs n stuff",
+  //   },
+  // ];
 
-  //states and effects
+  //states
 
   const [activeModal, setActiveModal] = useState("");
   const [activePage, setActivePage] = useState("");
+
+  const [newsData, setNewsData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // handlers
 
@@ -54,6 +61,25 @@ function App() {
     setActiveModal("");
   };
 
+  // functions
+
+  async function getNewsData() {
+    setLoading(true);
+
+    const resp = await axios.get(newsApiBaseUrl);
+    setNewsData(resp.data.articles);
+
+    setLoading(false);
+
+    getResponse();
+  }
+  console.log("newsData before mapping:", newsData);
+  // effects
+
+  useEffect(() => {
+    getNewsData();
+  }, []);
+
   return (
     <div className="page">
       <div className="page__content">
@@ -62,28 +88,9 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
         </Routes>
-        {cardData.map((card) => (
-          <NewsCardList
-            key={card.id}
-            cardImg={card.imageUrl}
-            cardDate={card.date}
-            cardTitle={card.title}
-            cardBody={card.body}
-            cardSource={card.source}
-          />
-        ))}
+        <NewsCardList newsData={newsData}></NewsCardList>
         <About></About>
         <Footer></Footer>{" "}
-        {cardData.map((card) => (
-          <SavedCardsList
-            key={card.id}
-            cardImg={card.imageUrl}
-            cardDate={card.date}
-            cardTitle={card.title}
-            cardBody={card.body}
-            cardSource={card.source}
-          />
-        ))}
       </div>
       <LoginModal
         activeModal={activeModal}
