@@ -10,7 +10,6 @@ import SavedCardsList from "../SavedCards/SavedCards";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
-import NewsCard from "../NewsCard/NewsCard";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { getResponse, newsApiBaseUrl } from "../../utils/api";
@@ -34,6 +33,9 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [activePage, setActivePage] = useState("");
+
+  const [cardLimit, setCardLimit] = useState(3);
+  const [cardPageSize, setCardPageSize] = useState(false);
 
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -61,6 +63,20 @@ function App() {
     setActiveModal("");
   };
 
+  const showMore = () => {
+    if (cardLimit === 3) {
+      setCardLimit(6);
+    } else {
+      setCardLimit(3);
+    }
+
+    setCardPageSize(!cardPageSize);
+  };
+
+  const expandCardList = () => {
+    console.log("something");
+  };
+
   // functions
 
   async function getNewsData() {
@@ -73,7 +89,6 @@ function App() {
 
     getResponse();
   }
-  console.log("newsData before mapping:", newsData);
   // effects
 
   useEffect(() => {
@@ -88,7 +103,12 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
         </Routes>
-        <NewsCardList newsData={newsData}></NewsCardList>
+        <NewsCardList
+          cardLimit={cardLimit}
+          newsData={newsData}
+          showMore={showMore}
+          cardPageSize={cardPageSize}
+        ></NewsCardList>
         <About></About>
         <Footer></Footer>{" "}
       </div>
