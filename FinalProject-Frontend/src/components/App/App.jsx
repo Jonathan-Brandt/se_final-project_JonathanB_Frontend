@@ -73,10 +73,6 @@ function App() {
     setCardPageSize(!cardPageSize);
   };
 
-  const expandCardList = () => {
-    console.log("something");
-  };
-
   // functions
 
   async function getNewsData() {
@@ -84,6 +80,22 @@ function App() {
 
     const resp = await axios.get(newsApiBaseUrl);
     setNewsData(resp.data.articles);
+
+    axios.interceptors.response.use(
+      function (response) {
+        const characterLimit = 200;
+        if (
+          typeof response.data === "string" &&
+          response.data.length > characterLimit
+        ) {
+          response.data = response.data.data.slice(0, characterLimit) + "...";
+        }
+        return response;
+      },
+      function (error) {
+        return getResponse(error);
+      },
+    );
 
     setLoading(false);
 

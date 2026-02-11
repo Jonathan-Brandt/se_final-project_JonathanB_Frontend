@@ -21,9 +21,12 @@ function NewsCardList({ newsData, cardLimit, showMore, cardPageSize }) {
             </div>
           ))}
         </ul>
-        <button className="showmore__button" type="button" onClick={showMore}>
+        {cardLimit === 3 ? (<button className="showmore__button" type="button" onClick={showMore} >
           Show more
-        </button>
+        </button>) : (<button className="showmore__button" type="button" onClick={showMore} >
+          Show less
+        </button>)} 
+        
       </div>
     </>
   );

@@ -41,7 +41,7 @@
   line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  width: 352px;
+  max-width: 352px;
   height: 110px;
   margin-left: 24px;
   font-family: "Roboto";
