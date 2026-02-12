@@ -8,3 +8,24 @@ function getResponse(res) {
 }
 
 export { getResponse };
+
+function limitCharacters() {
+  axios.interceptors.response.use(
+    function (response) {
+      const characterLimit = 200;
+      if (
+        Array.isArray(response.data) &&
+        response.data.length > characterLimit
+      ) {
+        response.data =
+          response.data.slice(0, characterLimit) + "... (truncated)";
+      }
+      return response;
+    },
+    function (error) {
+      return getResponse(error);
+    },
+  );
+}
+
+export { limitCharacters };
