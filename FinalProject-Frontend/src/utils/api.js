@@ -1,6 +1,3 @@
-import axios from "axios";
-
-
 export const newsApiBaseUrl =
   process.env.NODE_ENV === "production"
     ? "https://nomoreparties.co/news/v2/everything"
@@ -12,23 +9,26 @@ function getResponse(res) {
 
 export { getResponse };
 
-function limitCharacters() {
-  axios.interceptors.response.use(
-    function (response) {
-      const characterLimit = 200;
-      if (
-        Array.isArray(response.data) &&
-        response.data.length > characterLimit
-      ) {
-        response.data =
-          response.data.slice(0, characterLimit) + "... (truncated)";
-      }
-      return response;
-    },
-    function (error) {
-      return getResponse(error);
-    },
+export function getItems() {
+  return new Promise((resolve, reject) =>
+    resolve([
+      {
+        _id: "69952646d702a13f75036e8e",
+        title: "Crabs are based",
+        description: "read the title",
+      },
+    ]),
   );
 }
 
-export { limitCharacters };
+export function saveArticle(article) {
+  return new Promise((resolve, reject) => {
+    resolve({
+      _id: "69952646d702a13f75036e8f",
+      url: article,
+      url,
+      title: article.title,
+      imageUrl: article.imagUrl,
+    });
+  });
+}

@@ -4,6 +4,7 @@
   background-color: #f5f6f7;
   overflow: hidden;
   margin: 0 auto;
+  padding: 0;
 }
 
 .newscardlist-expanded {
@@ -62,20 +63,26 @@
 
   .newscardlist {
     margin-bottom: 32px;
-    margin-left: 40px;
+    margin-left: 0px;
   }
 
   .newscardlist__header {
     width: 336px;
     height: 34px;
     font-size: 30px;
-    margin-top: 40px;
-    margin-bottom: 32px;
-    margin-left: 80px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 40px;
   }
 
   .showmore__button {
     margin-left: 272px;
+    width: 240px;
+    height: 56px;
+  }
+  .newscardlist-expanded {
+    width: 768px;
+    height: 1140px;
   }
 }
 
@@ -101,6 +108,7 @@
   .newscardlist {
     margin-left: 16px;
     padding: 0;
+    gap: 10px;
   }
 
   .showmore__button {

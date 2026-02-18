@@ -12,7 +12,7 @@ import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import { getResponse, limitCharacters, newsApiBaseUrl } from "../../utils/api";
+import { getResponse, newsApiBaseUrl } from "../../utils/api";
 
 function App() {
   // simple placeholder data
@@ -79,15 +79,14 @@ function App() {
     setLoading(true);
 
     const resp = await axios.get(newsApiBaseUrl);
+
     setNewsData(resp.data.articles);
 
     setLoading(false);
 
     getResponse();
   }
-  
-  limitCharacters();
-   
+
   // effects
 
   useEffect(() => {

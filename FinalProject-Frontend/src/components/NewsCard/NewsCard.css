@@ -90,7 +90,7 @@
 @media screen and (max-width: 768px) {
   .news-card {
     width: 224px;
-    height: 420px;
+    max-height: 420px;
   }
 
   .news-card__img-container {
@@ -110,8 +110,8 @@
   }
 
   .news-card__title {
-    width: 192px;
-    height: 72px;
+    max-width: 192px;
+    max-height: 72px;
     font-size: 22px;
   }
 
@@ -129,8 +129,8 @@
 
 @media screen and (max-width: 320px) {
   .news-card {
-    width: 288px;
-    height: 440px;
+    max-width: 288px;
+    max-height: 440px;
   }
 
   .news-card__img-container {
@@ -153,8 +153,8 @@
   }
 
   .news-card__title {
-    width: 256px;
-    height: 48px;
+    max-width: 256px;
+    max-height: 48px;
     font-size: 22px;
     margin-left: 16px;
     margin-top: 10px;
@@ -162,15 +162,15 @@
 
   .news-card__body-txt {
     font-size: 16px;
-    width: 256px;
-    height: 88px;
+    max-width: 256px;
+    max-height: 88px;
     margin-left: 16px;
     margin-top: 0;
   }
 
   .save-card__button {
     margin-top: 16px;
-    margin-left: 232px;
+    margin-left: 169px;
   }
 
   .news-card__footer {
