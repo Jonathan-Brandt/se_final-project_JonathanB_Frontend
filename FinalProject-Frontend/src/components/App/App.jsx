@@ -12,7 +12,7 @@ import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import { getResponse, newsApiBaseUrl, saveArticle } from "../../utils/api";
+import { newsApiBaseUrl, saveArticle } from "../../utils/api";
 import { authorize, checkToken } from "../../utils/auth";
 
 function App() {
@@ -50,17 +50,9 @@ function App() {
   const [savedCards, setSavedCards] = useState([]);
   const [isSaved, setIsSaved] = useState(false);
 
+  const [currentUser, setCurrentUser] = useState(null);
+
   // handlers
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    closeModal();
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    closeModal();
-  };
 
   const handleSaveCard = async (card) => {
     try {
@@ -116,6 +108,25 @@ function App() {
 
     setLoading(false);
   }
+
+  async function handleLogin({ email, password }) {
+    try {
+      const authResponse = await authorize(email, password);
+      const token = authResponse.token;
+      const userData = await checkToken(token);
+      setCurrentUser(userData.data);
+      setIsLoggedIn(true);
+      closeModal();
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  }
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    closeModal();
+  };
 
   // effects
 

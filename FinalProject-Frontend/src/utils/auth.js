@@ -1,4 +1,4 @@
-import { getResponse, newsApiBaseUrl } from "../../utils/api";
+import { getResponse } from "../utils/api";
 
 //for later use in a fullstack environment :)
 
