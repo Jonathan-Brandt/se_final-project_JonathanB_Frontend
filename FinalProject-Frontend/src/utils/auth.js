@@ -1,5 +1,7 @@
-//import { getResponse, newsApiBaseUrl } from "../../utils/api";
-// for later
+import { getResponse, newsApiBaseUrl } from "../../utils/api";
+
+//for later use in a fullstack environment :)
+
 // export function signUp({ name, email, password }) {
 //   return fetch(`${newsApiBaseUrl}/signup`, {
 //     method: "POST",
@@ -19,7 +21,7 @@
 export const authorize = (email, password) => {
   return new Promise((resolve, reject) => {
     resolve({ token: "JOE MAMA" });
-  });
+  }).then(getResponse());
 };
 
 export const checkToken = (token) => {

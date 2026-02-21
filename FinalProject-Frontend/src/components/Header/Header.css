@@ -53,6 +53,19 @@
   cursor: pointer;
 }
 
+.header__saved-button {
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  max-width: 178px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .header__signin-button:hover {
   opacity: 0.5;
   transition: 0.3s;

@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import Header from "../Header/Header";
@@ -12,10 +12,12 @@ import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import { getResponse, newsApiBaseUrl } from "../../utils/api";
+import { getResponse, newsApiBaseUrl, saveArticle } from "../../utils/api";
+import { authorize, checkToken } from "../../utils/auth";
 
 function App() {
   // simple placeholder data
+
   //const cardData = [
   //   {
   //     id: 1,
@@ -31,6 +33,9 @@ function App() {
 
   //states
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [activeModal, setActiveModal] = useState("");
   const [activePage, setActivePage] = useState("");
 
@@ -40,7 +45,34 @@ function App() {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [isloggedIn, setIsLoggedIn] = useState(false);
+
+  const [savedCards, setSavedCards] = useState([]);
+  const [isSaved, setIsSaved] = useState(false);
+
   // handlers
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    closeModal();
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    closeModal();
+  };
+
+  const handleSaveCard = async (card) => {
+    try {
+      const savedArticle = await saveArticle(card);
+      setSavedCards([...savedCards, savedArticle]);
+    } catch (error) {
+      console.error("Failed to save article:", error);
+    }
+  };
+
+  const goToSaved = () => navigate("/saved");
+  const goHome = () => navigate("/");
 
   const onLoginClick = () => {
     setActiveModal("login-user");
@@ -83,8 +115,6 @@ function App() {
     setNewsData(resp.data.articles);
 
     setLoading(false);
-
-    getResponse();
   }
 
   // effects
@@ -97,17 +127,29 @@ function App() {
     <div className="page">
       <div className="page__content">
         <div className="content__cover"></div>
-        <Header onLoginClick={onLoginClick} onSignupClick={onSignupClick} />
+        <Header
+          onLoginClick={onLoginClick}
+          onSignupClick={onSignupClick}
+          goToSaved={goToSaved}
+          goHome={goHome}
+        />
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route
+            path="/saved"
+            element={<SavedCardsList savedCards={savedCards} />}
+          />
         </Routes>
-        <NewsCardList
-          cardLimit={cardLimit}
-          newsData={newsData}
-          showMore={showMore}
-          cardPageSize={cardPageSize}
-        ></NewsCardList>
-        <About></About>
+        {location.pathname === "/" && (
+          <NewsCardList
+            cardLimit={cardLimit}
+            newsData={newsData}
+            showMore={showMore}
+            cardPageSize={cardPageSize}
+            onSaveCard={handleSaveCard}
+          />
+        )}
+        {location.pathname === "/" && <About />}
         <Footer></Footer>{" "}
       </div>
       <LoginModal

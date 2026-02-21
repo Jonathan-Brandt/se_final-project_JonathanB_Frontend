@@ -25,10 +25,11 @@ export function saveArticle(article) {
   return new Promise((resolve, reject) => {
     resolve({
       _id: "69952646d702a13f75036e8f",
-      url: article,
-      url,
+      sourece: article.source.name,
       title: article.title,
-      imageUrl: article.imagUrl,
+      description: article.description,
+      imageUrl: article.urlToImage,
+      date: article.publishedAt,
     });
   });
 }

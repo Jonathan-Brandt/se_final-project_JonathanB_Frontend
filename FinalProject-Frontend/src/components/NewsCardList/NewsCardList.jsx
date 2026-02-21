@@ -1,7 +1,7 @@
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ newsData, cardLimit, showMore, cardPageSize }) {
+function NewsCardList({ newsData, cardLimit, showMore, cardPageSize, onSaveCard }) {
   return (
     <>
       <div
@@ -17,6 +17,8 @@ function NewsCardList({ newsData, cardLimit, showMore, cardPageSize }) {
                 cardTitle={newsData.title}
                 cardBody={newsData.content}
                 cardSource={newsData.source.name}
+                onSave={onSaveCard}
+                cardData={newsData}
               />
             </div>
           ))}

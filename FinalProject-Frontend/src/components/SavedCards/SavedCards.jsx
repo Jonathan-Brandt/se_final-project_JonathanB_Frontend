@@ -1,13 +1,7 @@
 import "./SavedCards.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function SavedCardsList({
-  cardImg,
-  cardDate,
-  cardTitle,
-  cardBody,
-  cardSource,
-}) {
+function SavedCardsList({ savedCards }) {
   return (
     // would be easier if I just IMPORT THE HEADER lol
     <>
@@ -24,13 +18,16 @@ function SavedCardsList({
         </div>
       </div>
       <div className="saved-articles__list">
-        <NewsCard
-          cardImg={cardImg}
-          cardDate={cardDate}
-          cardTitle={cardTitle}
-          cardBody={cardBody}
-          cardSource={cardSource}
-        ></NewsCard>
+        {savedCards.map((card, index) => (
+          <NewsCard
+            key={card._id || index}
+            cardImg={card.imageUrl}
+            cardDate={card.date}
+            cardTitle={card.title}
+            cardBody={card.description}
+            cardSource={card.sourece}
+          />
+        ))}
       </div>
       {/* import the footer here too, doofus */}
     </>

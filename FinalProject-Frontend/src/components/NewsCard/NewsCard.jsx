@@ -1,18 +1,16 @@
 import "./NewsCard.css";
 
-function NewsCard({ cardImg, cardDate, cardTitle, cardBody, cardSource }) {
-  // Remove API-added bracket suffixes (e.g. "[+123 chars]") and truncate to 200 chars
+function NewsCard({ cardImg, cardDate, cardTitle, cardBody, cardSource, onSave, cardData }) {
   const rawBody = cardBody || "";
   const cleanedBody = rawBody
-    .replace(/\s*\[\+?\d+\s*chars\]$/i, "") // common NewsAPI suffix
-    .replace(/\s*\[[^\]]+\]$/g, "") // fallback: remove any trailing [...] block
+    .replace(/\s*\[\+?\d+\s*chars\]$/i, "")
+    .replace(/\s*\[[^\]]+\]$/g, "")
     .trim();
   const shortBody =
     cleanedBody.length > 200
       ? `${cleanedBody.slice(0, 200).trim()}...`
       : cleanedBody;
 
-  // Format ISO date (e.g. 2026-01-19T16:10:33Z) to MM/DD/YYYY (uses UTC to preserve published date)
   const formatDateMMDDYYYY = (iso) => {
     if (!iso) return "";
     const d = new Date(iso);
@@ -26,7 +24,7 @@ function NewsCard({ cardImg, cardDate, cardTitle, cardBody, cardSource }) {
 
   return (
     <>
-      <button className="save-card__button" type="button"></button>
+      <button className="save-card__button" type="button" onClick={() => onSave(cardData)}></button>
       <div className="news-card">
         <div className="news-card__img-container">
           <img
