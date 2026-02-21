@@ -37,7 +37,6 @@ function App() {
   const location = useLocation();
 
   const [activeModal, setActiveModal] = useState("");
-  const [activePage, setActivePage] = useState("");
 
   const [cardLimit, setCardLimit] = useState(3);
   const [cardPageSize, setCardPageSize] = useState(false);
@@ -45,7 +44,7 @@ function App() {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const [isloggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [savedCards, setSavedCards] = useState([]);
   const [isSaved, setIsSaved] = useState(false);
@@ -61,6 +60,7 @@ function App() {
     } catch (error) {
       console.error("Failed to save article:", error);
     }
+    setIsSaved(true);
   };
 
   const goToSaved = () => navigate("/saved");
@@ -143,12 +143,20 @@ function App() {
           onSignupClick={onSignupClick}
           goToSaved={goToSaved}
           goHome={goHome}
+          isLoggedIn={isLoggedIn}
+          logout={handleLogout}
         />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route
             path="/saved"
-            element={<SavedCardsList savedCards={savedCards} />}
+            element={
+              <SavedCardsList
+                savedCards={savedCards}
+                isSaved={isSaved}
+                currentUser={currentUser}
+              />
+            }
           />
         </Routes>
         {location.pathname === "/" && (
@@ -158,6 +166,7 @@ function App() {
             showMore={showMore}
             cardPageSize={cardPageSize}
             onSaveCard={handleSaveCard}
+            isSaved={isSaved}
           />
         )}
         {location.pathname === "/" && <About />}
@@ -169,6 +178,7 @@ function App() {
         loginClick={onLoginClick}
         onSecondButtonClick={onSecondButtonClick}
         closeModal={closeModal}
+        onLoginModalSubmit={handleLogin}
       />
 
       <RegisterModal

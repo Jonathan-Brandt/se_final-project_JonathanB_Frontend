@@ -1,6 +1,15 @@
 import "./NewsCard.css";
 
-function NewsCard({ cardImg, cardDate, cardTitle, cardBody, cardSource, onSave, cardData }) {
+function NewsCard({
+  cardImg,
+  cardDate,
+  cardTitle,
+  cardBody,
+  cardSource,
+  onSave,
+  cardData,
+  isSaved,
+}) {
   const rawBody = cardBody || "";
   const cleanedBody = rawBody
     .replace(/\s*\[\+?\d+\s*chars\]$/i, "")
@@ -24,7 +33,11 @@ function NewsCard({ cardImg, cardDate, cardTitle, cardBody, cardSource, onSave, 
 
   return (
     <>
-      <button className="save-card__button" type="button" onClick={() => onSave(cardData)}></button>
+      <button
+        className="save-card__button"
+        type="button"
+        onClick={() => onSave(cardData)}
+      ></button>
       <div className="news-card">
         <div className="news-card__img-container">
           <img

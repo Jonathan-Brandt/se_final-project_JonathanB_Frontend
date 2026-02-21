@@ -1,7 +1,14 @@
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ newsData, cardLimit, showMore, cardPageSize, onSaveCard }) {
+function NewsCardList({
+  newsData,
+  cardLimit,
+  showMore,
+  cardPageSize,
+  onSaveCard,
+  isSaved,
+}) {
   return (
     <>
       <div
@@ -19,16 +26,20 @@ function NewsCardList({ newsData, cardLimit, showMore, cardPageSize, onSaveCard 
                 cardSource={newsData.source.name}
                 onSave={onSaveCard}
                 cardData={newsData}
+                isSaved={isSaved}
               />
             </div>
           ))}
         </ul>
-        {cardLimit === 3 ? (<button className="showmore__button" type="button" onClick={showMore} >
-          Show more
-        </button>) : (<button className="showmore__button" type="button" onClick={showMore} >
-          Show less
-        </button>)} 
-        
+        {cardLimit === 3 ? (
+          <button className="showmore__button" type="button" onClick={showMore}>
+            Show more
+          </button>
+        ) : (
+          <button className="showmore__button" type="button" onClick={showMore}>
+            Show less
+          </button>
+        )}
       </div>
     </>
   );
