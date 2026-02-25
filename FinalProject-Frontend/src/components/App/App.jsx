@@ -8,7 +8,6 @@ import {
   useLocation,
   useSearchParams,
 } from "react-router-dom";
-import axios from "axios";
 
 import Header from "../Header/Header";
 import MainPage from "../MainPage/MainPage";
@@ -19,7 +18,7 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import PreLoader from "../PreLoader/PreLoader";
-import { newsApiBaseUrl, saveArticle } from "../../utils/api";
+import { newsApiBaseUrl, saveArticle, getNewsArticles } from "../../utils/api";
 import { authorize, checkToken } from "../../utils/auth";
 
 function App() {
@@ -96,6 +95,10 @@ function App() {
     setActiveModal("");
   };
 
+  const handleSearch = (query) => {
+    getNewsData(query);
+  };
+
   const showMore = () => {
     if (cardLimit === 3) {
       setCardLimit(6);
@@ -118,11 +121,11 @@ function App() {
     }
   }, [loading, newsData, hasFetched]);
 
-  async function getNewsData() {
+  async function getNewsData(query = "news") {
     setLoading(true);
     try {
-      const resp = await axios.get(newsApiBaseUrl);
-      setNewsData(resp.data.articles);
+      const resp = await getNewsArticles(query);
+      setNewsData(resp.articles);
       setHasFetched(true);
     } catch (error) {
       console.log(

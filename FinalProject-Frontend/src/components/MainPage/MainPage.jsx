@@ -1,24 +1,16 @@
 import "./MainPage.css";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { newsApiBaseUrl } from "../../utils/api";
+import { useState } from "react";
 
-function MainPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("q" || ""));
+function MainPage({ handleSearch }) {
+  const [query, setQuery] = useState("");
 
-  const handleSearch = (e) => {
+  const onSearchSubmit = (e) => {
     e.preventDefault();
-    setSearchParams({ q: query });
-  };
-
-  useEffect(() => {
-    const currentQuery = searchParams.get("q");
-    if (currentQuery) {
-      console.log(`Searching for: ${currentQuery}`);
+    if (query.trim()) {
+      handleSearch(query);
     }
-  }, [searchParams]);
+  };
 
   return (
     <>
@@ -29,7 +21,7 @@ function MainPage() {
           account
         </p>
         <div className="search-bar__container">
-          <form onSubmit={handleSearch} className="search-bar">
+          <form onSubmit={onSearchSubmit} className="search-bar">
             <input
               type="text"
               className="search-bar__input"
