@@ -3,7 +3,6 @@ import NewsCard from "../NewsCard/NewsCard";
 
 function SavedCardsList({ savedCards }) {
   return (
-    // would be easier if I just IMPORT THE HEADER lol
     <>
       <div className="saved-articles__top">
         <div className="text__container">

@@ -21,14 +21,15 @@ import { getResponse } from "../utils/api";
 export const authorize = (email, password) => {
   return new Promise((resolve, reject) => {
     resolve({ token: "JOE MAMA" });
-  }).then(getResponse());
+  });
 };
 
 export const checkToken = (token) => {
   return new Promise((resolve, reject) => {
     resolve({
-      data: {
-        name: "Himothy Jones",
+      userData: {
+        firstName: "Himothy",
+        lastName: "Jones",
         email: "himothy.jones@example.com",
         _id: "fake-id",
       },

@@ -13,6 +13,10 @@
   overflow: hidden;
 }
 
+.header__saved {
+  background-color: #f5f6f7;
+}
+
 .header__logo {
   max-width: 200px;
   height: 24px;

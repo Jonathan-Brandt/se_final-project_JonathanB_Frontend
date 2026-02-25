@@ -1,7 +1,13 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  useNavigate,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 import axios from "axios";
 
 import Header from "../Header/Header";
@@ -12,6 +18,7 @@ import Footer from "../Footer/Footer";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import PreLoader from "../PreLoader/PreLoader";
 import { newsApiBaseUrl, saveArticle } from "../../utils/api";
 import { authorize, checkToken } from "../../utils/auth";
 
@@ -42,7 +49,9 @@ function App() {
   const [cardPageSize, setCardPageSize] = useState(false);
 
   const [newsData, setNewsData] = useState([]);
+
   const [loading, setLoading] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -58,7 +67,7 @@ function App() {
       const savedArticle = await saveArticle(card);
       setSavedCards([...savedCards, savedArticle]);
     } catch (error) {
-      console.error("Failed to save article:", error);
+      console.log("Failed to save article:", error);
     }
     setIsSaved(true);
   };
@@ -97,14 +106,30 @@ function App() {
     setCardPageSize(!cardPageSize);
   };
 
-  // functions
+  // important functions
+
+  useEffect(() => {
+    if (!loading) {
+      if (hasFetched && Array.isArray(newsData) && newsData.length === 0) {
+        console.log("Sorry, nothing was found.");
+      } else if (hasFetched) {
+        console.log("News data found");
+      }
+    }
+  }, [loading, newsData, hasFetched]);
 
   async function getNewsData() {
     setLoading(true);
-
-    const resp = await axios.get(newsApiBaseUrl);
-
-    setNewsData(resp.data.articles);
+    try {
+      const resp = await axios.get(newsApiBaseUrl);
+      setNewsData(resp.data.articles);
+      setHasFetched(true);
+    } catch (error) {
+      console.log(
+        "sorry, something went wrong during the request. There may be a connection issue or the server may be down. Please try again later.",
+      );
+      setHasFetched(true);
+    }
 
     setLoading(false);
   }
@@ -117,6 +142,7 @@ function App() {
       setCurrentUser(userData.data);
       setIsLoggedIn(true);
       closeModal();
+      console.log("yippe!!!");
     } catch (error) {
       console.error("Login failed:", error);
     }
@@ -134,10 +160,16 @@ function App() {
     getNewsData();
   }, []);
 
+  //main content
+
+  if (loading) {
+    return <PreLoader isLoading={loading} />;
+  }
+
   return (
     <div className="page">
       <div className="page__content">
-        <div className="content__cover"></div>
+        {location.pathname === "/" && <div className="content__cover"></div>}
         <Header
           onLoginClick={onLoginClick}
           onSignupClick={onSignupClick}
@@ -147,7 +179,7 @@ function App() {
           logout={handleLogout}
         />
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<MainPage handleSearch={handleSearch} />} />
           <Route
             path="/saved"
             element={
