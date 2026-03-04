@@ -2,9 +2,12 @@ import "./Header.css";
 import logo from "../../assets/NewsExplorer.svg";
 import mobile from "../../assets/mobile-menu.svg";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({ onLoginClick, goToSaved, goHome, isLoggedIn }) {
   const isSavedPage = useLocation().pathname === "/saved";
+  const currentUser = useContext(CurrentUserContext);
   return (
     <>
       <header className={isSavedPage ? "header header__saved" : "header"}>

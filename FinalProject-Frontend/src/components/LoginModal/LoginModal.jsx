@@ -12,6 +12,12 @@ function LoginModal({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const isFormFilled = email.length > 0 && password.length > 0;
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   useEffect(() => {
     if (isOpen) {
       setPassword("");
@@ -47,6 +53,7 @@ function LoginModal({
       switchModal={switchModal}
       loginClick={loginClick}
       onSecondButtonClick={onSecondButtonClick}
+      isFormFilled={isFormFilled}
     >
       <label htmlFor="email" className="modal__label">
         Email{""}

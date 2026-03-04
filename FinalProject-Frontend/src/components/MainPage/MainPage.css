@@ -48,7 +48,7 @@
 
 .search-bar__input {
   padding-left: 24px;
-  max-width: 608px;
+  width: 415px;
   height: 61px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -77,6 +77,8 @@
   background-color: #347eff;
   transition: 0.3s;
 }
+
+
 
 @media screen and (max-width: 768px) {
   .main-page {

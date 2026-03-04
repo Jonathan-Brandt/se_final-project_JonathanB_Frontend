@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import { useState } from "react";
 
 function ModalWithForm({
   children,
@@ -9,6 +10,7 @@ function ModalWithForm({
   onSecondButtonClick,
   closeModal,
   onSubmit,
+  isFormFilled,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
@@ -19,10 +21,16 @@ function ModalWithForm({
           type="button"
           className="modal__close"
         ></button>
-        <form onSubmit={onSubmit} className="modal__form">
+        <form onSubmit={onSubmit} className={"modal__form"}>
           {children}
           <div className="modal__buttons">
-            <button type="submit" className="modal__submit">
+            <button
+              type="submit"
+              className={
+                !isFormFilled ? "modal__submit" : "modal__submit_active"
+              }
+              disabled={!isFormFilled}
+            >
               {buttonText}
             </button>
             {secondButtonText && (

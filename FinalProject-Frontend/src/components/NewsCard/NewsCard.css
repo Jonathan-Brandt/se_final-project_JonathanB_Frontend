@@ -77,14 +77,95 @@
   overflow: hidden;
 }
 
+.card-saved {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../assets/card-saved.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  position: relative;
+  border-radius: 8px;
+  border-style: none;
+  margin-left: 336px;
+  margin-top: 0px;
+  bottom: -58px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.delete-card__button {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../assets/trash-inactive.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  position: relative;
+  border-radius: 8px;
+  border-style: none;
+  margin-left: 336px;
+  margin-top: 0px;
+  bottom: -58px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
 .save-card__button:hover {
   transition: 0.3s;
   background-image: url("../../assets/save-bttn-hover.svg");
 }
 
+.delete-card__button:hover {
+  transition: 0.3s;
+  background-image: url("../../assets/trash-active.svg");
+}
+
+.save-card__button:hover + .please-login__msg-cntnr {
+  display: block;
+  animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(15%);
+    opacity: 0;
+    to {
+      transform: translateX(10px);
+      opacity: 1;
+    }
+  }
+}
+
 .saved-card {
   transition: 0.3s;
   background-image: url("../../assets/marked-card.svg");
+}
+
+.please-login__msg-cntnr {
+  max-width: 182px;
+  max-height: 40px;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: -55px;
+  margin-left: 149px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  position: relative;
+  display: none;
+}
+
+.please-login__msg {
+  max-width: 142px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -124,6 +205,10 @@
   .save-card__button {
     margin-top: 8px;
     margin-left: 176px;
+  }
+
+  .save-card__button:hover + .please-login__msg-cntnr {
+    display: none;
   }
 }
 
@@ -175,5 +260,9 @@
 
   .news-card__footer {
     margin-left: 16px;
+  }
+
+  .save-card__button:hover + .please-login__msg-cntnr {
+    display: none;
   }
 }

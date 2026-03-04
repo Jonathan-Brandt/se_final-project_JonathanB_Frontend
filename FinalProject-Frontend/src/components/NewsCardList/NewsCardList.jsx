@@ -8,6 +8,7 @@ function NewsCardList({
   cardPageSize,
   onSaveCard,
   isSaved,
+  isLoggedIn,
 }) {
   return (
     <>
@@ -27,6 +28,7 @@ function NewsCardList({
                 onSave={onSaveCard}
                 cardData={newsData}
                 isSaved={isSaved}
+                isLoggedIn={isLoggedIn}
               />
             </div>
           ))}

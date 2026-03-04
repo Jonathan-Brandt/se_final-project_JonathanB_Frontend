@@ -18,7 +18,7 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import PreLoader from "../PreLoader/PreLoader";
-import { newsApiBaseUrl, saveArticle, getNewsArticles } from "../../utils/api";
+import { saveArticle, getNewsArticles } from "../../utils/api";
 import { authorize, checkToken } from "../../utils/auth";
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
   const [savedCards, setSavedCards] = useState([]);
   const [isSaved, setIsSaved] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
 
   // handlers
 
@@ -69,6 +69,19 @@ function App() {
       console.log("Failed to save article:", error);
     }
     setIsSaved(true);
+  };
+
+  const handleDeleteCard = async (card, e) => {
+    if (e && typeof e.preventDefault === "function") {
+      e.preventDefault();
+    }
+
+    if (!isLoggedIn) {
+      console.log("Please log in to delete this article");
+      return;
+    }
+
+    setSavedCards((prev) => prev.filter((item) => item._id !== card._id));
   };
 
   const goToSaved = () => navigate("/saved");
@@ -144,6 +157,8 @@ function App() {
       const userData = await checkToken(token);
       setCurrentUser(userData.data);
       setIsLoggedIn(true);
+      localStorage.setItem("jwt", authResponse.token);
+      setCurrentUser(userData.data);
       closeModal();
       console.log("yippe!!!");
     } catch (error) {
@@ -155,6 +170,7 @@ function App() {
     setCurrentUser(null);
     setIsLoggedIn(false);
     closeModal();
+    localStorage.removeItem("jwt");
   };
 
   // effects
@@ -190,6 +206,7 @@ function App() {
                 savedCards={savedCards}
                 isSaved={isSaved}
                 currentUser={currentUser}
+                deleteCard={handleDeleteCard}
               />
             }
           />
@@ -202,6 +219,7 @@ function App() {
             cardPageSize={cardPageSize}
             onSaveCard={handleSaveCard}
             isSaved={isSaved}
+            isLoggedIn={isLoggedIn}
           />
         )}
         {location.pathname === "/" && <About />}

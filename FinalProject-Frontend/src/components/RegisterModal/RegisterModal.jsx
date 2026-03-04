@@ -13,6 +13,13 @@ function RegisterModal({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const isFormFilled =
+    (name.length > 0 || email.length > 0) && password.length > 0;
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   useEffect(() => {
     if (isOpen) {
       setName("");
@@ -47,6 +54,7 @@ function RegisterModal({
       isOpen={isOpen}
       onSubmit={handleSubmit}
       onSecondButtonClick={onSecondButtonClick}
+      isFormFilled={isFormFilled}
     >
       <label htmlFor="email" className="modal__label">
         Email{" "}

@@ -9,6 +9,8 @@ function NewsCard({
   onSave,
   cardData,
   isSaved,
+  isLoggedIn,
+  deleteCard,
 }) {
   const rawBody = cardBody || "";
   const cleanedBody = rawBody
@@ -33,11 +35,26 @@ function NewsCard({
 
   return (
     <>
-      <button
-        className="save-card__button"
-        type="button"
-        onClick={() => onSave(cardData)}
-      ></button>
+      {location.pathname === "/" ? (
+        <button
+          className="save-card__button"
+          type="button"
+          onClick={() => onSave(cardData)}
+        ></button>
+      ) : (
+        <button
+          className="delete-card__button"
+          type="button"
+          onClick={() => deleteCard(cardData)}
+        ></button>
+      )}
+
+      {!isLoggedIn && location.pathname === "/" && (
+        <div className="please-login__msg-cntnr">
+          <p className="please-login__msg">Sign in to save articles</p>
+        </div>
+      )}
+
       <div className="news-card">
         <div className="news-card__img-container">
           <img
