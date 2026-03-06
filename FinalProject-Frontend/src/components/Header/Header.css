@@ -14,7 +14,19 @@
 }
 
 .header__saved {
-  background-color: #f5f6f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  background: none;
+  max-width: 1440px;
+  height: 80px;
+  padding-left: 104px;
+  padding-right: 104px;
+  background-color: white;
+  border-bottom: 1px solid #c4c4c4;
+  position: relative;
+  overflow: hidden;
 }
 
 .header__logo {
@@ -41,6 +53,18 @@
   cursor: pointer;
 }
 
+.header__home-button__saved {
+  width: 49px;
+  height: 24px;
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
 .header__signin-button {
   background: none;
   font-family: "Roboto", sans-serif;
@@ -51,6 +75,22 @@
   height: 36px;
   border-radius: 100px;
   border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  position: relative;
+  cursor: pointer;
+}
+
+.header__signin-button__saved {
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: black;
+  width: 166px;
+  height: 36px;
+  border-radius: 100px;
+  border-color: black;
   border-style: solid;
   border-width: 1px;
   position: relative;
@@ -78,12 +118,6 @@
 .header__home-button:hover {
   opacity: 0.5;
   transition: 0.3s;
-}
-
-.header__logo:hover {
-  opacity: 0.5;
-  transition: 0.3s;
-  cursor: pointer;
 }
 
 .mobile-menu__btn {

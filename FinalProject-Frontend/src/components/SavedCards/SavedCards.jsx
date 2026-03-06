@@ -1,12 +1,11 @@
 import "./SavedCards.css";
 import NewsCard from "../NewsCard/NewsCard";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { useLocation } from "react-router-dom";
 import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function SavedCardsList({ savedCards, deleteCard, isLoggedIn }) {
-  const isSavedPage = useLocation().pathname === "/saved";
   const currentUser = useContext(CurrentUserContext);
+
   return (
     <>
       <div className="saved-articles__top">
@@ -17,7 +16,7 @@ function SavedCardsList({ savedCards, deleteCard, isLoggedIn }) {
           </p>
           <p className="saved-articles__kywrds-lst">
             By keywords:
-            <span className="keywords"> JIMBO THE CRAB BAYBEEEEEEEE</span>
+            <span className="keywords"> </span>
           </p>
         </div>
       </div>

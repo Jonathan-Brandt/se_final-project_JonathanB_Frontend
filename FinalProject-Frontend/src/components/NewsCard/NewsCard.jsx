@@ -6,11 +6,12 @@ function NewsCard({
   cardTitle,
   cardBody,
   cardSource,
-  onSave,
+  onSaveCard,
   cardData,
   isSaved,
   isLoggedIn,
   deleteCard,
+  savedCards,
 }) {
   const rawBody = cardBody || "";
   const cleanedBody = rawBody
@@ -32,14 +33,32 @@ function NewsCard({
     return `${mm}/${dd}/${yyyy}`;
   };
   const displayDate = formatDateMMDDYYYY(cardDate);
+  const displaySource =
+    typeof cardSource === "string" ? cardSource : cardSource?.name || "";
+
+  const getSourceName = (source) =>
+    typeof source === "string" ? source : source?.name || "";
+
+  const getCardFingerprint = (card) => {
+    const title = card?.title || cardTitle || "";
+    const date = card?.date || card?.publishedAt || cardDate || "";
+    const imageUrl = card?.imageUrl || card?.urlToImage || cardImg || "";
+    const sourceName = getSourceName(card?.source || cardSource);
+
+    return `${title}|${date}|${imageUrl}|${sourceName}`;
+  };
+
+  const isCardSaved = savedCards?.some(
+    (saved) => getCardFingerprint(saved) === getCardFingerprint(cardData),
+  );
 
   return (
     <>
       {location.pathname === "/" ? (
         <button
-          className="save-card__button"
+          className={!isCardSaved ? "save-card__button" : "card-saved"}
           type="button"
-          onClick={() => onSave(cardData)}
+          onClick={() => onSaveCard(cardData)}
         ></button>
       ) : (
         <button
@@ -70,7 +89,7 @@ function NewsCard({
 
         <p className="news-card__body-txt">{shortBody}</p>
 
-        <p className="news-card__footer">{cardSource}</p>
+        <p className="news-card__footer">{displaySource}</p>
       </div>
     </>
   );

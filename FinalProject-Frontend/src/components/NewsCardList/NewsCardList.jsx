@@ -9,6 +9,7 @@ function NewsCardList({
   onSaveCard,
   isSaved,
   isLoggedIn,
+  savedCards,
 }) {
   return (
     <>
@@ -25,9 +26,9 @@ function NewsCardList({
                 cardTitle={newsData.title}
                 cardBody={newsData.content}
                 cardSource={newsData.source.name}
-                onSave={onSaveCard}
+                onSaveCard={onSaveCard}
                 cardData={newsData}
-                isSaved={isSaved}
+                savedCards={savedCards}
                 isLoggedIn={isLoggedIn}
               />
             </div>

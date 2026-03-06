@@ -1,5 +1,4 @@
 import "./ModalWithForm.css";
-import { useState } from "react";
 
 function ModalWithForm({
   children,

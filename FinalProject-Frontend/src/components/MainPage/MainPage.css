@@ -73,12 +73,29 @@
   cursor: pointer;
 }
 
+.search-inactive {
+  color: #b6bcbf;
+  background-color: #e6e8eb;
+  width: 168px;
+  height: 64px;
+  border: none;
+  border-radius: 100px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  position: relative;
+  cursor: pointer;
+}
+
 .search-button:hover {
   background-color: #347eff;
   transition: 0.3s;
 }
 
-
+.search-button:active {
+  background-color: #2a65cc;
+  transition: 0.1s;
+}
 
 @media screen and (max-width: 768px) {
   .main-page {
@@ -116,6 +133,11 @@
   }
 
   .search-button {
+    width: 160px;
+    height: 60px;
+  }
+
+  .search-inactive {
     width: 160px;
     height: 60px;
   }
@@ -164,6 +186,14 @@
   }
 
   .search-button {
+    width: 288px;
+    height: 56px;
+    position: absolute;
+    top: 156px;
+    cursor: pointer;
+  }
+
+  .search-inactive {
     width: 288px;
     height: 56px;
     position: absolute;

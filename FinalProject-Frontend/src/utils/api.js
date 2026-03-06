@@ -28,15 +28,17 @@ export function getItems() {
   );
 }
 
-export function saveArticle(article) {
+export async function saveArticle(article, query) {
+  console.log(query);
   return new Promise((resolve, reject) => {
     resolve({
       _id: "69952646d702a13f75036e8f",
-      sourece: article.source.name,
+      source: article.source,
       title: article.title,
       description: article.description,
       imageUrl: article.urlToImage,
       date: article.publishedAt,
+      query: query,
     });
   });
 }

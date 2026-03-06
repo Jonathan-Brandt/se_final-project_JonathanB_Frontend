@@ -1,13 +1,7 @@
 import "./App.css";
-import { use, useEffect, useState } from "react";
+import { use, useEffect, useState, useContext } from "react";
 
-import {
-  Route,
-  Routes,
-  useNavigate,
-  useLocation,
-  useSearchParams,
-} from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 
 import Header from "../Header/Header";
 import MainPage from "../MainPage/MainPage";
@@ -18,11 +12,12 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import PreLoader from "../PreLoader/PreLoader";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { saveArticle, getNewsArticles } from "../../utils/api";
 import { authorize, checkToken } from "../../utils/auth";
 
 function App() {
-  // simple placeholder data
+  // simple placeholder data just in case :)
 
   //const cardData = [
   //   {
@@ -59,16 +54,40 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
 
+  const [query, setQuery] = useState("");
+
+  const getSourceName = (source) =>
+    typeof source === "string" ? source : source?.name || "";
+
+  const getCardFingerprint = (card) => {
+    const title = card?.title || "";
+    const date = card?.date || card?.publishedAt || "";
+    const imageUrl = card?.imageUrl || card?.urlToImage || "";
+    const sourceName = getSourceName(card?.source);
+
+    return `${title}|${date}|${imageUrl}|${sourceName}`;
+  };
+
   // handlers
 
   const handleSaveCard = async (card) => {
     try {
-      const savedArticle = await saveArticle(card);
-      setSavedCards([...savedCards, savedArticle]);
+      const savedArticle = await saveArticle(card, query);
+      const isAlreadySaved = savedCards.some(
+        (savedCard) =>
+          getCardFingerprint(savedCard) === getCardFingerprint(savedArticle),
+      );
+      if (!isAlreadySaved) {
+        const updatedCards = [...savedCards, { ...savedArticle, query }];
+        setSavedCards(updatedCards);
+        localStorage.setItem("cards", JSON.stringify(updatedCards));
+        setIsSaved(true);
+      } else {
+        console.log("Article already saved");
+      }
     } catch (error) {
       console.log("Failed to save article:", error);
     }
-    setIsSaved(true);
   };
 
   const handleDeleteCard = async (card, e) => {
@@ -155,10 +174,10 @@ function App() {
       const authResponse = await authorize(email, password);
       const token = authResponse.token;
       const userData = await checkToken(token);
-      setCurrentUser(userData.data);
+      setCurrentUser(userData.userData);
       setIsLoggedIn(true);
       localStorage.setItem("jwt", authResponse.token);
-      setCurrentUser(userData.data);
+      localStorage.setItem("currentUser", JSON.stringify(userData.userData));
       closeModal();
       console.log("yippe!!!");
     } catch (error) {
@@ -167,10 +186,11 @@ function App() {
   }
 
   const handleLogout = () => {
-    setCurrentUser(null);
+    setCurrentUser({ firstName: "", lastName: "" });
     setIsLoggedIn(false);
     closeModal();
     localStorage.removeItem("jwt");
+    localStorage.removeItem("currentUser");
   };
 
   // effects
@@ -179,69 +199,117 @@ function App() {
     getNewsData();
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    const storedUser = localStorage.getItem("currentUser");
+    const storedCards = localStorage.getItem("cards");
+
+    if (token && storedUser) {
+      try {
+        const userData = JSON.parse(storedUser);
+        setCurrentUser(userData);
+        setIsLoggedIn(true);
+      } catch (error) {
+        console.error("Error parsing stored user data:", error);
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("currentUser");
+      }
+    }
+
+    if (storedCards) {
+      try {
+        const parsedCards = JSON.parse(storedCards);
+
+        const uniqueCards = parsedCards.filter(
+          (card, index, arr) =>
+            arr.findIndex(
+              (c) => getCardFingerprint(c) === getCardFingerprint(card),
+            ) === index,
+        );
+        setSavedCards(uniqueCards);
+        localStorage.setItem("cards", JSON.stringify(uniqueCards));
+      } catch (error) {
+        console.error("Error parsing stored cards:", error);
+        localStorage.removeItem("cards");
+      }
+    }
+  }, []);
+
   //main content
 
   if (loading) {
     return <PreLoader isLoading={loading} />;
   }
+  console.log(query);
 
   return (
-    <div className="page">
-      <div className="page__content">
-        {location.pathname === "/" && <div className="content__cover"></div>}
-        <Header
-          onLoginClick={onLoginClick}
-          onSignupClick={onSignupClick}
-          goToSaved={goToSaved}
-          goHome={goHome}
-          isLoggedIn={isLoggedIn}
-          logout={handleLogout}
-        />
-        <Routes>
-          <Route path="/" element={<MainPage handleSearch={handleSearch} />} />
-          <Route
-            path="/saved"
-            element={
-              <SavedCardsList
-                savedCards={savedCards}
-                isSaved={isSaved}
-                currentUser={currentUser}
-                deleteCard={handleDeleteCard}
-              />
-            }
-          />
-        </Routes>
-        {location.pathname === "/" && (
-          <NewsCardList
-            cardLimit={cardLimit}
-            newsData={newsData}
-            showMore={showMore}
-            cardPageSize={cardPageSize}
-            onSaveCard={handleSaveCard}
-            isSaved={isSaved}
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <div className="page__content">
+          {location.pathname === "/" && <div className="content__cover"></div>}
+          <Header
+            onLoginClick={onLoginClick}
+            onSignupClick={onSignupClick}
+            goToSaved={goToSaved}
+            goHome={goHome}
             isLoggedIn={isLoggedIn}
+            logout={handleLogout}
           />
-        )}
-        {location.pathname === "/" && <About />}
-        <Footer></Footer>{" "}
-      </div>
-      <LoginModal
-        activeModal={activeModal}
-        isOpen={activeModal === "login-user"}
-        loginClick={onLoginClick}
-        onSecondButtonClick={onSecondButtonClick}
-        closeModal={closeModal}
-        onLoginModalSubmit={handleLogin}
-      />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MainPage
+                  handleSearch={handleSearch}
+                  query={query}
+                  setQuery={setQuery}
+                />
+              }
+            />
+            <Route
+              path="/saved"
+              element={
+                <SavedCardsList
+                  savedCards={savedCards}
+                  isSaved={isSaved}
+                  deleteCard={handleDeleteCard}
+                />
+              }
+            />
+          </Routes>
+          {location.pathname === "/" && (
+            <NewsCardList
+              cardLimit={cardLimit}
+              newsData={newsData}
+              showMore={showMore}
+              cardPageSize={cardPageSize}
+              onSaveCard={handleSaveCard}
+              isSaved={isSaved}
+              savedCards={savedCards}
+              isLoggedIn={isLoggedIn}
+            />
+          )}
+          {location.pathname === "/" && <About />}
+          <Footer></Footer>{" "}
+        </div>
+        <LoginModal
+          activeModal={activeModal}
+          isOpen={activeModal === "login-user"}
+          loginClick={onLoginClick}
+          onSecondButtonClick={onSecondButtonClick}
+          closeModal={closeModal}
+          onLoginModalSubmit={handleLogin}
+        />
 
-      <RegisterModal
-        activeModal={activeModal}
-        isOpen={activeModal === "new-user"}
-        registerClickClick={onSignupClick}
-        onSecondButtonClick={onSecondButtonClick}
-        closeModal={closeModal}
-      />
-    </div>
+        <RegisterModal
+          activeModal={activeModal}
+          isOpen={activeModal === "new-user"}
+          registerClickClick={onSignupClick}
+          onSecondButtonClick={onSecondButtonClick}
+          closeModal={closeModal}
+        />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

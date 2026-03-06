@@ -2,14 +2,19 @@ import "./MainPage.css";
 
 import { useState } from "react";
 
-function MainPage({ handleSearch }) {
-  const [query, setQuery] = useState("");
-
+function MainPage({ handleSearch, query, setQuery }) {
   const onSearchSubmit = (e) => {
     e.preventDefault();
+
     if (query.trim()) {
       handleSearch(query);
     }
+  };
+
+  const isFormFilled = query.length > 0;
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
   };
 
   return (
@@ -26,10 +31,14 @@ function MainPage({ handleSearch }) {
               type="text"
               className="search-bar__input"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={handleChange}
               placeholder="Enter topic"
             />
-            <button className="search-button" type="submit">
+            <button
+              className={!isFormFilled ? "search-inactive" : "search-button"}
+              type="submit"
+              disabled={!isFormFilled}
+            >
               Search
             </button>
           </form>
