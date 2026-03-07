@@ -1,4 +1,5 @@
 import "./NewsCard.css";
+import { useLocation } from "react-router-dom";
 
 function NewsCard({
   cardImg,
@@ -8,11 +9,13 @@ function NewsCard({
   cardSource,
   onSaveCard,
   cardData,
-  isSaved,
   isLoggedIn,
   deleteCard,
   savedCards,
 }) {
+  const isHomePage = useLocation().pathname === "/";
+  const isSavedPage = useLocation().pathname === "/saved";
+
   const rawBody = cardBody || "";
   const cleanedBody = rawBody
     .replace(/\s*\[\+?\d+\s*chars\]$/i, "")
@@ -54,9 +57,11 @@ function NewsCard({
 
   return (
     <>
-      {location.pathname === "/" ? (
+      {isHomePage ? (
         <button
-          className={!isCardSaved ? "save-card__button" : "card-saved"}
+          className={
+            isCardSaved && isLoggedIn ? "card-saved" : "save-card__button"
+          }
           type="button"
           onClick={() => onSaveCard(cardData)}
         ></button>
@@ -68,12 +73,23 @@ function NewsCard({
         ></button>
       )}
 
-      {!isLoggedIn && location.pathname === "/" && (
+      {!isLoggedIn && isHomePage && (
         <div className="please-login__msg-cntnr">
           <p className="please-login__msg">Sign in to save articles</p>
         </div>
       )}
 
+      {isLoggedIn && isSavedPage && (
+        <div className="please-login__msg-cntnr">
+          <p className="please-login__msg">remove article</p>
+        </div>
+      )}
+
+      {isLoggedIn && isSavedPage && (
+        <div className="keyword-cntnr">
+          <p className="keyword">{cardData.query}</p>
+        </div>
+      )}
       <div className="news-card">
         <div className="news-card__img-container">
           <img

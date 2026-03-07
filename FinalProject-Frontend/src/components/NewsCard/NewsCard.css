@@ -137,6 +137,11 @@
   }
 }
 
+.delete-card__button:hover + .please-login__msg-cntnr {
+  display: block;
+  animation: slide-in 0.3s ease-out;
+}
+
 .saved-card {
   transition: 0.3s;
   background-image: url("../../assets/marked-card.svg");
@@ -166,6 +171,26 @@
   padding-bottom: 10px;
   padding-left: 20px;
   text-align: center;
+}
+
+.keyword-cntnr {
+  width: 87px;
+  max-height: 40px;
+  background-color: white;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  margin-left: 24px;
+  border-radius: 10px;
+}
+
+.keyword {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {

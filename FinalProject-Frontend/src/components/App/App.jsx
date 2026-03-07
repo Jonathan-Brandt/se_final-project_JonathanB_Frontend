@@ -253,7 +253,7 @@ function App() {
             goToSaved={goToSaved}
             goHome={goHome}
             isLoggedIn={isLoggedIn}
-            logout={handleLogout}
+            signout={handleLogout}
           />
           <Routes>
             <Route
@@ -273,6 +273,7 @@ function App() {
                   savedCards={savedCards}
                   isSaved={isSaved}
                   deleteCard={handleDeleteCard}
+                  isLoggedIn={isLoggedIn}
                 />
               }
             />

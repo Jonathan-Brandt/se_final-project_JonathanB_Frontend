@@ -53,14 +53,14 @@
   cursor: pointer;
 }
 
-.header__home-button__saved {
+.header__home-svpg {
   width: 49px;
   height: 24px;
   background: none;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
-  color: black;
+  color: #1a1b22;
   border: none;
   cursor: pointer;
 }
@@ -81,22 +81,6 @@
   cursor: pointer;
 }
 
-.header__signin-button__saved {
-  background: none;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  color: black;
-  width: 166px;
-  height: 36px;
-  border-radius: 100px;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  position: relative;
-  cursor: pointer;
-}
-
 .header__saved-button {
   background: none;
   font-family: "Roboto", sans-serif;
@@ -110,6 +94,75 @@
   padding: 0;
 }
 
+.header__saved-bttn-svpg {
+  background: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1a1b22;
+  max-width: 178px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.signout__bttn-container {
+  border: 1px solid white;
+  border-radius: 30px;
+  width: 112px;
+  max-height: 48px;
+  text-align: center;
+  padding: 12px 19px 12px 19px;
+}
+
+.bttn-container__svpg {
+  border: 1px solid #1a1b22;
+  border-radius: 30px;
+  width: 112px;
+  max-height: 48px;
+  text-align: center;
+  padding: 12px 19px 12px 19px;
+}
+
+.header__signout-bttn {
+  height: 24px;
+  background: none;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  border-color: white;
+  max-width: 178px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.signout-bttn__svpg {
+  height: 24px;
+  background: none;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1a1b22;
+  border-color: #1a1b22;
+  max-width: 178px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
 .header__signin-button:hover {
   opacity: 0.5;
   transition: 0.3s;
@@ -118,6 +171,11 @@
 .header__home-button:hover {
   opacity: 0.5;
   transition: 0.3s;
+}
+
+.logout-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .mobile-menu__btn {
