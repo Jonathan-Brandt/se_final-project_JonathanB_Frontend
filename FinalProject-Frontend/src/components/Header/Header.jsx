@@ -4,16 +4,78 @@ import logosaved from "../../assets/logo-savedpage.svg";
 import logout from "../../assets/logout.svg";
 import logoutWhite from "../../assets/logout-white.svg";
 import mobile from "../../assets/mobile-menu.svg";
+import mobileSaved from "../../assets/menu-svdpg.svg";
 import { useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
   const isSavedPage = useLocation().pathname === "/saved";
 
+  const [subMenuOpen, setSubMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setSubMenuOpen(!subMenuOpen);
+  };
+
   const currentUser = useContext(CurrentUserContext);
   return (
     <>
+      {subMenuOpen && (
+        <div className="menu-content__cover">
+          <div className="mobile__menu">
+            <button
+              onClick={toggleMenu}
+              type="button"
+              className="menu__close"
+            ></button>
+            {isSavedPage ? (
+              <img
+                src={logosaved}
+                alt="header__logo"
+                className="header__logo"
+              />
+            ) : (
+              <img src={logo} alt="header__logo" className="header__logo" />
+            )}
+            <button
+              className={
+                !isSavedPage ? "header__home-button" : "header__home-svpg"
+              }
+              onClick={goHome}
+            >
+              Home
+            </button>
+            {!isLoggedIn ? (
+              <button className="header__signin-button" onClick={onLoginClick}>
+                Signin
+              </button>
+            ) : (
+              <div
+                className={
+                  !isSavedPage
+                    ? "signout__bttn-container"
+                    : "bttn-container__svpg"
+                }
+              >
+                <button
+                  className={
+                    !isSavedPage ? "header__signout-bttn" : "signout-bttn__svpg"
+                  }
+                  onClick={signout}
+                >
+                  {currentUser.firstName}
+                  <img
+                    src={!isSavedPage ? logoutWhite : logout}
+                    alt="logout"
+                    className="logout-icon"
+                  />
+                </button>
+              </div>
+            )}
+          </div>{" "}
+        </div>
+      )}
       <header className={isSavedPage ? "header__saved" : "header"}>
         {isSavedPage ? (
           <img src={logosaved} alt="header__logo" className="header__logo" />
@@ -70,9 +132,12 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
               </button>
             </div>
           )}
-
           <button className="mobile-menu__btn">
-            <img src={mobile} alt="mobile menu " />
+            <img
+              src={!isSavedPage ? mobile : mobileSaved}
+              alt="mobile menu"
+              onClick={toggleMenu}
+            />
           </button>
         </div>
       </header>

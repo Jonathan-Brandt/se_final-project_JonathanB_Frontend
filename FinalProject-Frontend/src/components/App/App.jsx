@@ -271,7 +271,6 @@ function App() {
               element={
                 <SavedCardsList
                   savedCards={savedCards}
-                  isSaved={isSaved}
                   deleteCard={handleDeleteCard}
                   isLoggedIn={isLoggedIn}
                 />

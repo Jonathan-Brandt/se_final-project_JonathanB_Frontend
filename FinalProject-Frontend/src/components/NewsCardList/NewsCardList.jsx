@@ -7,7 +7,6 @@ function NewsCardList({
   showMore,
   cardPageSize,
   onSaveCard,
-  isSaved,
   isLoggedIn,
   savedCards,
 }) {

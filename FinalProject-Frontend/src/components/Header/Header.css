@@ -186,8 +186,61 @@
   display: none;
 }
 
+.mobile__menu {
+  max-height: 174px;
+  width: 320px;
+  background-color: #1a1b22;
+  position: absolute;
+  z-index: 2;
+  transition: 0.3s;
+  padding: 16px 16px 24px 16px;
+}
+
+.mobile__menu .header__signin-button {
+  width: 288px;
+  height: 56px;
+  display: block;
+}
+
+.mobile__menu .header__signout-bttn,
+.mobile__menu .signout-bttn__svpg {
+  width: 288px;
+  height: 56px;
+  display: block;
+}
+
+.mobile__menu .header__home-button,
+.mobile__menu .header__home-svpg {
+  height: 56px;
+  display: block;
+  margin-bottom: 22px;
+}
+
+.menu__close {
+  position: absolute;
+  background-image: url("../../assets/close.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  margin-left: 260px;
+}
+
+.menu-content__cover {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
-  .header {
+  .header,
+  .header__saved {
     max-width: 100%;
     height: 66px;
     padding-left: 40px;
@@ -212,7 +265,8 @@
 }
 
 @media screen and (max-width: 320px) {
-  .header {
+  .header,
+  .header__saved {
     max-width: 320px;
     max-height: 56px;
     gap: 136px;
@@ -225,12 +279,37 @@
     width: 117px;
   }
 
-  .header__home-button {
+  .header__home-button,
+  .header__home-svpg {
     display: none;
   }
 
   .header__signin-button {
     display: none;
+  }
+
+  .header__saved-button,
+  .header__saved-bttn-svpg,
+  .signout__bttn-container,
+  .bttn-container__svpg {
+    display: none;
+  }
+
+  .mobile__menu .signout__bttn-container,
+  .mobile__menu .bttn-container__svpg {
+    display: block;
+    width: 288px;
+    height: 56px;
+    max-height: none;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .mobile__menu .header__signout-bttn,
+  .mobile__menu .signout-bttn__svpg {
+    width: 288px;
+    height: 56px;
+    display: flex;
   }
 
   .header__bttn-container {

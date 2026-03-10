@@ -5,6 +5,10 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function SavedCardsList({ savedCards, deleteCard, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
+  const uniqueKeywords = [
+    ...new Set(savedCards.map((card) => card.query).filter(Boolean)),
+  ];
+  const keywordsText = uniqueKeywords.join(", ");
 
   return (
     <>
@@ -16,7 +20,7 @@ function SavedCardsList({ savedCards, deleteCard, isLoggedIn }) {
           </p>
           <p className="saved-articles__kywrds-lst">
             By keywords:
-            <span className="keywords"> </span>
+            <span className="keywords"> {keywordsText}</span>
           </p>
         </div>
       </div>

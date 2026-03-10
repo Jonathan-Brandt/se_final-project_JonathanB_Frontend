@@ -71,6 +71,10 @@
 }
 
 @media screen and (max-width: 320px) {
+  .saved-articles__top {
+    padding-bottom: 26px;
+  }
+
   .saved-articles__list {
     width: 320px;
     max-height: 2726px;
@@ -97,6 +101,7 @@
 
   .text__container {
     margin-left: 16px;
-    margin-bottom: 26px;
+    margin-bottom: 0;
+    height: 250px;
   }
 }
