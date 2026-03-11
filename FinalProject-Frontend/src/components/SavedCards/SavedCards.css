@@ -45,6 +45,10 @@
   background-color: #f5f6f7;
   padding-left: 104px;
   padding-top: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {

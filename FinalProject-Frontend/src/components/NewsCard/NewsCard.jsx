@@ -56,7 +56,25 @@ function NewsCard({
   );
 
   return (
-    <>
+    <div className="news-card__wrapper">
+      <div className="news-card">
+        <div className="news-card__img-container">
+          <img
+            src={cardImg}
+            alt="news card: image"
+            className="news-card__img"
+          />
+        </div>
+        <div className="news-card__header">
+          <h2 className="news-card__date">{displayDate}</h2>
+          <h1 className="news-card__title">{cardTitle}</h1>
+        </div>
+
+        <p className="news-card__body-txt">{shortBody}</p>
+
+        <p className="news-card__footer">{displaySource}</p>
+      </div>
+
       {isHomePage ? (
         <button
           className={
@@ -90,24 +108,7 @@ function NewsCard({
           <p className="keyword">{cardData.query}</p>
         </div>
       )}
-      <div className="news-card">
-        <div className="news-card__img-container">
-          <img
-            src={cardImg}
-            alt="news card: image"
-            className="news-card__img"
-          />
-        </div>
-        <div className="news-card__header">
-          <h2 className="news-card__date">{displayDate}</h2>
-          <h1 className="news-card__title">{cardTitle}</h1>
-        </div>
-
-        <p className="news-card__body-txt">{shortBody}</p>
-
-        <p className="news-card__footer">{displaySource}</p>
-      </div>
-    </>
+    </div>
   );
 }
 
