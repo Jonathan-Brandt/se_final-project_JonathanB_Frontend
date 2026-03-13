@@ -17,23 +17,6 @@ import { saveArticle, getNewsArticles } from "../../utils/api";
 import { authorize, checkToken } from "../../utils/auth";
 
 function App() {
-  // simple placeholder data just in case :)
-
-  //const cardData = [
-  //   {
-  //     id: 1,
-  //     imageUrl:
-  //       "https://media.istockphoto.com/id/182820338/photo/blue-crab-on-dock.jpg?s=612x612&w=0&k=20&c=08bMr4A8-IV_FoaQsUSik9wc11SRCQ0wI4kGZT6JDH8=",
-  //     date: "December 19, 2025",
-  //     title: "Placeholder text for Jimbo the crab",
-  //     body: "Ah jeez! It's Jimbo the placeholder crab! That's right, this absolutely meaningless crustacean is on your door steps just straight ding dong ditching this news card into absolute oblivion. At least until I get the api stuf working!",
-  //     source: "joemama",
-  //     keywords: "Crabs n stuff",
-  //   },
-  // ];
-
-  //states
-
   const navigate = useNavigate();
   const location = useLocation();
 
