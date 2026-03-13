@@ -8,5 +8,5 @@ export default defineConfig({
     port: 3000,
   },
 
-  base: "/se_final-project_JonathanB_Frontend",
+  base: "/se_final-project_JonathanB_Frontend/",
 });
