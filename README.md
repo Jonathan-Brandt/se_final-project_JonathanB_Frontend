@@ -2,7 +2,7 @@
 
 ## Build link
 
-https://github.com/Jonathan-Brandt/se_final-project_JonathanB_Frontend
+https://jonathan-brandt.github.io/se_final-project_JonathanB_Frontend/
 
 ## Project pitch video where I describe the application and the development process. Link bleow
 
