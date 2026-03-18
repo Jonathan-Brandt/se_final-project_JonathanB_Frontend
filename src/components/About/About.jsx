@@ -4,7 +4,7 @@ import jb from "../../assets/jb-author-img_resize.jpg";
 function About() {
   return (
     <>
-      <div className="about-page">
+      <section className="about-page">
         <div className="about-page__content">
           <div className="author-img__container">
             <img
@@ -29,7 +29,7 @@ function About() {
             </p>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

@@ -103,7 +103,7 @@ function NewsCard({
         </div>
       )}
 
-      {isLoggedIn && isSavedPage && (
+      {isLoggedIn && isSavedPage && cardData.query && (
         <div className="keyword-cntnr">
           <p className="keyword">{cardData.query}</p>
         </div>

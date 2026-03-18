@@ -175,12 +175,13 @@
 .please-login__msg {
   max-width: 142px;
   height: 18px;
-  padding: 0;
   margin: 0;
-  padding-top: 12px;
-  padding-bottom: 10px;
-  padding-left: 20px;
+  padding: 12px 20px;
+
+  display: block;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .keyword-cntnr {

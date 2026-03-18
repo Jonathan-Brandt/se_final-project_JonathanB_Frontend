@@ -6,7 +6,7 @@ import lnkdInLogo from "../../assets/LinkedIn.png";
 function Footer() {
   return (
     <>
-      <div className="footer">
+      <footer className="footer">
         <p className="footer__copyright">
           © 2026 Supersite, Powered by News API
         </p>
@@ -43,7 +43,7 @@ function Footer() {
             />
           </a>
         </div>
-      </div>
+      </footer>
     </>
   );
 }
