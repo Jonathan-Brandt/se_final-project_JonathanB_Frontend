@@ -23,7 +23,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
 
   const [cardLimit, setCardLimit] = useState(3);
-  const [cardPageSize, setCardPageSize] = useState(false);
+  const [cardPageSize, setCardPageSize] = useState(3);
 
   const [newsData, setNewsData] = useState([]);
 
@@ -106,7 +106,7 @@ function App() {
     }
   };
 
-  const closeModal = () => {
+  const closeModal = (event) => {
     setActiveModal("");
   };
 
@@ -115,13 +115,9 @@ function App() {
   };
 
   const showMore = () => {
-    if (cardLimit === 3) {
-      setCardLimit(6);
-    } else {
-      setCardLimit(3);
-    }
+    setCardLimit((prev) => prev + 3);
 
-    setCardPageSize(!cardPageSize);
+    setCardPageSize((prev) => prev + 3);
   };
 
   // important functions
@@ -220,11 +216,6 @@ function App() {
 
   //main content
 
-  if (loading) {
-    return <PreLoader isLoading={loading} />;
-  }
-  console.log(query);
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -260,18 +251,21 @@ function App() {
               }
             />
           </Routes>
-          {location.pathname === "/" && (
-            <NewsCardList
-              cardLimit={cardLimit}
-              newsData={newsData}
-              showMore={showMore}
-              cardPageSize={cardPageSize}
-              onSaveCard={handleSaveCard}
-              isSaved={isSaved}
-              savedCards={savedCards}
-              isLoggedIn={isLoggedIn}
-            />
-          )}
+          {location.pathname === "/" &&
+            (loading ? (
+              <PreLoader isLoading={loading} />
+            ) : (
+              <NewsCardList
+                cardLimit={cardLimit}
+                newsData={newsData}
+                showMore={showMore}
+                cardPageSize={cardPageSize}
+                onSaveCard={handleSaveCard}
+                isSaved={isSaved}
+                savedCards={savedCards}
+                isLoggedIn={isLoggedIn}
+              />
+            ))}
           {location.pathname === "/" && <About />}
           <Footer></Footer>{" "}
         </div>

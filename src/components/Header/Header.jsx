@@ -30,46 +30,31 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
               className="menu__close"
             ></button>
             {isSavedPage ? (
-              <img
-                src={logosaved}
-                alt="header__logo"
-                className="header__logo"
-              />
+              <img src={logo} alt="header__logo" className="header__logo" />
             ) : (
               <img src={logo} alt="header__logo" className="header__logo" />
             )}
-            <button
-              className={
-                !isSavedPage ? "header__home-button" : "header__home-svpg"
-              }
-              onClick={goHome}
-            >
-              Home
-            </button>
+
+            <div className="mobile__btnn-container">
+              <button className="header__home-button" onClick={goHome}>
+                Home
+              </button>
+              {isLoggedIn && (
+                <button className="header__saved-button" onClick={goToSaved}>
+                  Saved Articles
+                </button>
+              )}
+            </div>
+
             {!isLoggedIn ? (
               <button className="header__signin-button" onClick={onLoginClick}>
                 Signin
               </button>
             ) : (
-              <div
-                className={
-                  !isSavedPage
-                    ? "signout__bttn-container"
-                    : "bttn-container__svpg"
-                }
-              >
-                <button
-                  className={
-                    !isSavedPage ? "header__signout-bttn" : "signout-bttn__svpg"
-                  }
-                  onClick={signout}
-                >
+              <div className="signout__bttn-container">
+                <button className="header__signout-bttn" onClick={signout}>
                   {currentUser.firstName}
-                  <img
-                    src={!isSavedPage ? logoutWhite : logout}
-                    alt="logout"
-                    className="logout-icon"
-                  />
+                  <img src={logoutWhite} alt="logout" className="logout-icon" />
                 </button>
               </div>
             )}

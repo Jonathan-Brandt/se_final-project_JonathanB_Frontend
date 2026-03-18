@@ -5,6 +5,7 @@
   background-position: center;
   max-height: 576px;
   max-width: 1440px;
+  margin: 0 auto;
 }
 
 .page__content {

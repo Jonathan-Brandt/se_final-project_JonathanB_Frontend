@@ -12,7 +12,7 @@ function getResponse(res) {
 export { getResponse };
 
 export function getNewsArticles(query = "") {
-  const url = `${newsApiBaseUrl}?q=${encodeURIComponent(query)}&apiKey=${apiKey}&pageSize=6`;
+  const url = `${newsApiBaseUrl}?q=${encodeURIComponent(query)}&apiKey=${apiKey}&pageSize=60`;
   return fetch(url).then(getResponse);
 }
 

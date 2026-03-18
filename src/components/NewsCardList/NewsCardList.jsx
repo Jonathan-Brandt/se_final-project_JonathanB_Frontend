@@ -12,9 +12,7 @@ function NewsCardList({
 }) {
   return (
     <>
-      <div
-        className={`newscardlist-container ${cardPageSize ? "newscardlist-expanded" : "newscardlist-container"}`}
-      >
+      <div className="newscardlist-container ">
         <h1 className="newscardlist__header">Search results</h1>
         <ul className="newscardlist">
           {newsData.slice(0, cardLimit).map((newsData, index) => (
@@ -33,15 +31,10 @@ function NewsCardList({
             </div>
           ))}
         </ul>
-        {cardLimit === 3 ? (
-          <button className="showmore__button" type="button" onClick={showMore}>
-            Show more
-          </button>
-        ) : (
-          <button className="showmore__button" type="button" onClick={showMore}>
-            Show less
-          </button>
-        )}
+
+        <button className="showmore__button" type="button" onClick={showMore}>
+          Show more
+        </button>
       </div>
     </>
   );

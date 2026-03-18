@@ -16,6 +16,7 @@
   height: 272px;
   display: flex;
   justify-content: center;
+  object-fit: cover;
 }
 
 .news-card__date {
@@ -315,7 +316,7 @@
   .card-saved,
   .delete-card__button {
     top: 16px;
-    right: 16px;
+    right: 76px;
   }
 
   .keyword-cntnr {

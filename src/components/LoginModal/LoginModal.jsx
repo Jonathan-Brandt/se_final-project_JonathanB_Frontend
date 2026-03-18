@@ -9,33 +9,51 @@ function LoginModal({
   onLoginModalSubmit,
   onSecondButtonClick,
 }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const isFormFilled = email.length > 0 && password.length > 0;
+  const [errors, setErrors] = useState({});
+
+  const isFormFilled =
+    formData.email.length > 0 && formData.password.length > 0;
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   useEffect(() => {
     if (isOpen) {
-      setPassword("");
-      setEmail("");
+      setFormData({ email: "", password: "" });
+      setErrors({});
     }
   }, [isOpen]);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const validate = (values) => {
+    let errors = {};
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email address is invalid";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
+    return errors;
   };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLoginModalSubmit({ email, password });
+    const validationErrors = validate(formData);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      onLoginModalSubmit({
+        email: formData.email,
+        password: formData.password,
+      });
+      console.log("Log-in successful :)");
+    }
   };
 
   const switchModal = () => {
@@ -58,26 +76,30 @@ function LoginModal({
       <label htmlFor="email" className="modal__label">
         Email{""}
         <input
+          name="email"
           type="Email"
           className="modal__input"
           id="email"
           placeholder="Enter email"
           required
-          onChange={handleEmailChange}
-          value={email}
+          onChange={handleChange}
+          value={formData.email}
         />
+        {errors.email && <span className="error">{errors.email}</span>}
       </label>
       <label htmlFor="password" className="modal__label">
         Password{" "}
         <input
-          type="text"
+          name="password"
+          type="password"
           className="modal__input"
           id="login-password"
           placeholder="Enter password"
           required
-          onChange={handlePasswordChange}
-          value={password}
+          onChange={handleChange}
+          value={formData.password}
         />
+        {errors.password && <span className="error">{errors.password}</span>}
       </label>
     </ModalWithForm>
   );

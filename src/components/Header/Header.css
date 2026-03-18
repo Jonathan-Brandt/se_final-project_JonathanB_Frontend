@@ -163,12 +163,17 @@
   gap: 16px;
 }
 
-.header__signin-button:hover {
+.header__home-button:hover,
+.header__signin-button:hover,
+.header__signout-bttn:hover,
+.header__saved-button:hover {
   opacity: 0.5;
   transition: 0.3s;
 }
 
-.header__home-button:hover {
+.header__saved-bttn-svpg:hover,
+.header__home-svpg:hover,
+.header__signin-button-svpg:hover {
   opacity: 0.5;
   transition: 0.3s;
 }
@@ -199,21 +204,25 @@
 .mobile__menu .header__signin-button {
   width: 288px;
   height: 56px;
-  display: block;
+  display: inline;
 }
 
 .mobile__menu .header__signout-bttn,
 .mobile__menu .signout-bttn__svpg {
   width: 288px;
   height: 56px;
-  display: block;
+  display: inline;
 }
 
 .mobile__menu .header__home-button,
 .mobile__menu .header__home-svpg {
   height: 56px;
-  display: block;
-  margin-bottom: 22px;
+  display: inline;
+}
+
+.mobile__menu .header__saved-button {
+  height: 56px;
+  display: inline;
 }
 
 .menu__close {
@@ -236,6 +245,14 @@
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.mobile__btnn-container {
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 22px;
+  gap: 60px;
 }
 
 @media screen and (max-width: 768px) {
