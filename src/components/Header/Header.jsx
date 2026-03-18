@@ -36,11 +36,21 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
             )}
 
             <div className="mobile__btnn-container">
-              <button className="header__home-button" onClick={goHome}>
+              <button
+                className={`header__home-button ${
+                  !isSavedPage ? "header__nav-active-light" : ""
+                }`}
+                onClick={goHome}
+              >
                 Home
               </button>
               {isLoggedIn && (
-                <button className="header__saved-button" onClick={goToSaved}>
+                <button
+                  className={`header__saved-button ${
+                    isSavedPage ? "header__nav-active-light" : ""
+                  }`}
+                  onClick={goToSaved}
+                >
                   Saved Articles
                 </button>
               )}
@@ -71,7 +81,9 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
         <div className="header__bttn-container">
           <button
             className={
-              !isSavedPage ? "header__home-button" : "header__home-svpg"
+              !isSavedPage
+                ? "header__home-button header__nav-active-light"
+                : "header__home-svpg"
             }
             onClick={goHome}
           >
@@ -82,7 +94,7 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
               className={
                 !isSavedPage
                   ? "header__saved-button"
-                  : "header__saved-bttn-svpg"
+                  : "header__saved-bttn-svpg header__nav-active-dark"
               }
               onClick={goToSaved}
             >

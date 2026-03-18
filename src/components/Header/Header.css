@@ -107,6 +107,13 @@
   padding: 0;
 }
 
+.header__nav-active-light,
+.header__nav-active-dark {
+  text-decoration: underline;
+  text-underline-offset: 32px;
+  text-decoration-thickness: 3px;
+}
+
 .signout__bttn-container {
   border: 1px solid white;
   border-radius: 30px;

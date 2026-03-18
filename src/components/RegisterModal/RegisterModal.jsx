@@ -9,40 +9,62 @@ function RegisterModal({
   onRegisterModalSubmit,
   onSecondButtonClick,
 }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    userName: "",
+  });
+
+  const [errors, setErrors] = useState({});
 
   const isFormFilled =
-    (name.length > 0 || email.length > 0) && password.length > 0;
+    formData.email.length > 0 &&
+    formData.password.length > 0 &&
+    formData.userName.length > 0;
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   useEffect(() => {
     if (isOpen) {
-      setName("");
-      setEmail("");
-      setPassword("");
+      setFormData({ email: "", password: "", userName: "" });
+      setErrors({});
     }
   }, [isOpen]);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
+  const validate = (values) => {
+    let errors = {};
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email address is invalid";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+    if (!values.userName) {
+      errors.userName = "A name is required";
+    }
+    return errors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegisterModalSubmit({ name, avatar, email, password });
+    const validationErrors = validate(formData);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      onLoginModalSubmit({
+        email: formData.email,
+        password: formData.password,
+      });
+      console.log("Log-in successful :)");
+    }
   };
 
   return (
@@ -64,9 +86,11 @@ function RegisterModal({
           id="register-email"
           placeholder="Enter your email"
           required
-          onChange={handleEmailChange}
-          value={email}
+          onChange={handleChange}
+          value={formData.email}
+          name="email"
         />
+        {errors.email && <span className="error">{errors.email}</span>}
       </label>
       <label htmlFor="password" className="modal__label">
         Password{" "}
@@ -76,9 +100,11 @@ function RegisterModal({
           id="register-password"
           placeholder="Enter password"
           required
-          onChange={handlePasswordChange}
-          value={password}
+          onChange={handleChange}
+          value={formData.password}
+          name="password"
         />
+        {errors.password && <span className="error">{errors.password}</span>}
       </label>
       <label htmlFor="name" className="modal__label">
         Username{" "}
@@ -88,9 +114,11 @@ function RegisterModal({
           id="register-name"
           placeholder="Enter your username"
           required
-          onChange={handleNameChange}
-          value={name}
+          onChange={handleChange}
+          value={formData.userName}
+          name="userName"
         />
+        {errors.userName && <span className="error">{errors.userName}</span>}
       </label>
     </ModalWithForm>
   );

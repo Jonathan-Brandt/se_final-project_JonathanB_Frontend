@@ -83,7 +83,11 @@ function App() {
       return;
     }
 
-    setSavedCards((prev) => prev.filter((item) => item._id !== card._id));
+    setSavedCards((prev) => {
+      const filteredCards = prev.filter((item) => item._id !== card._id);
+      localStorage.setItem("cards", JSON.stringify(filteredCards));
+      return filteredCards;
+    });
   };
 
   const goToSaved = () => navigate("/saved");
@@ -106,7 +110,7 @@ function App() {
     }
   };
 
-  const closeModal = (event) => {
+  const closeModal = () => {
     setActiveModal("");
   };
 
@@ -213,6 +217,20 @@ function App() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    const escPress = (event) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+    if (activeModal) {
+      document.addEventListener("keydown", escPress);
+    }
+    return () => {
+      document.removeEventListener("keydown", escPress);
+    };
+  }, [activeModal]);
 
   //main content
 

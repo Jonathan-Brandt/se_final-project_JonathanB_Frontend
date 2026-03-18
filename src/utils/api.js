@@ -29,10 +29,14 @@ export function getItems() {
 }
 
 export async function saveArticle(article, query) {
+  const generatedId =
+    typeof crypto !== "undefined" && crypto.randomUUID
+      ? crypto.randomUUID()
+      : Date.now().toString() + "-" + Math.random().toString(16).slice(2);
   console.log(query);
   return new Promise((resolve, reject) => {
     resolve({
-      _id: "69952646d702a13f75036e8f",
+      _id: generatedId,
       source: article.source,
       title: article.title,
       description: article.description,
