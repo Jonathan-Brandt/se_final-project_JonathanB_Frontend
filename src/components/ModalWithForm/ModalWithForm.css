@@ -151,3 +151,30 @@
   margin: 0 auto;
   position: relative;
 }
+
+@media screen and (max-width: 320px) {
+  .modal {
+    top: 0;
+    left: -32px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .modal__content {
+    max-width: 320px;
+    padding: 16px 16px 16px;
+  }
+
+  .modal__submit {
+    width: 288px;
+  }
+
+  .modal__switch {
+    margin-left: 35px;
+    margin-bottom: 200px;
+  }
+
+  .modal__close {
+    right: 0px;
+  }
+}

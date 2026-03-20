@@ -12,11 +12,11 @@ function NewsCardList({
 }) {
   return (
     <>
-      <div className="newscardlist-container ">
-        <h1 className="newscardlist__header">Search results</h1>
-        <ul className="newscardlist">
+      <div className="news-card-list__container ">
+        <h1 className="news-card-list__header">Search results</h1>
+        <ul className="news-card-list">
           {newsData.slice(0, cardLimit).map((newsData, index) => (
-            <div key={index}>
+            <li className="news-card-list__item" key={index}>
               <NewsCard
                 cardImg={newsData.urlToImage}
                 cardDate={newsData.publishedAt}
@@ -28,11 +28,15 @@ function NewsCardList({
                 savedCards={savedCards}
                 isLoggedIn={isLoggedIn}
               />
-            </div>
+            </li>
           ))}
         </ul>
 
-        <button className="showmore__button" type="button" onClick={showMore}>
+        <button
+          className="news-card-list__show-more-button"
+          type="button"
+          onClick={showMore}
+        >
           Show more
         </button>
       </div>

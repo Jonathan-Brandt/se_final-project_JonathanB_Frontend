@@ -59,7 +59,7 @@
   position: relative;
 }
 
-.search-button {
+.search-bar__button {
   width: 168px;
   height: 64px;
   border: none;
@@ -73,7 +73,7 @@
   cursor: pointer;
 }
 
-.search-inactive {
+.search-bar__button_disabled {
   color: #b6bcbf;
   background-color: #e6e8eb;
   width: 168px;
@@ -87,12 +87,12 @@
   cursor: pointer;
 }
 
-.search-button:hover {
+.search-bar__button:hover {
   background-color: #347eff;
   transition: 0.3s;
 }
 
-.search-button:active {
+.search-bar__button:active {
   background-color: #2a65cc;
   transition: 0.1s;
 }
@@ -127,17 +127,17 @@
     border-style: none;
   }
 
-  .search-button:hover {
+  .search-bar__button:hover {
     background-color: #347eff;
     transition: 0.3s;
   }
 
-  .search-button {
+  .search-bar__button {
     width: 160px;
     height: 60px;
   }
 
-  .search-inactive {
+  .search-bar__button_disabled {
     width: 160px;
     height: 60px;
   }
@@ -185,7 +185,7 @@
     top: 81px;
   }
 
-  .search-button {
+  .search-bar__button {
     width: 288px;
     height: 56px;
     position: absolute;
@@ -193,7 +193,7 @@
     cursor: pointer;
   }
 
-  .search-inactive {
+  .search-bar__button_disabled {
     width: 288px;
     height: 56px;
     position: absolute;
@@ -201,7 +201,7 @@
     cursor: pointer;
   }
 
-  .search-button:hover {
+  .search-bar__button:hover {
     background-color: #347eff;
     transition: 0.3s;
     cursor: pointer;

@@ -78,34 +78,36 @@ function NewsCard({
       {isHomePage ? (
         <button
           className={
-            isCardSaved && isLoggedIn ? "card-saved" : "save-card__button"
+            isCardSaved && isLoggedIn
+              ? "news-card_saved"
+              : "news-card__save-button"
           }
           type="button"
           onClick={() => onSaveCard(cardData)}
         ></button>
       ) : (
         <button
-          className="delete-card__button"
+          className="news-card__delete-button"
           type="button"
           onClick={() => deleteCard(cardData)}
         ></button>
       )}
 
       {!isLoggedIn && isHomePage && (
-        <div className="please-login__msg-cntnr">
-          <p className="please-login__msg">Sign in to save articles</p>
+        <div className="news-card__login-hint-container">
+          <p className="news-card__login-hint">Sign in to save articles</p>
         </div>
       )}
 
       {isLoggedIn && isSavedPage && (
-        <div className="please-login__msg-cntnr">
-          <p className="please-login__msg">remove article</p>
+        <div className="news-card__login-hint-container">
+          <p className="news-card__login-hint">remove article</p>
         </div>
       )}
 
       {isLoggedIn && isSavedPage && cardData.query && (
-        <div className="keyword-cntnr">
-          <p className="keyword">{cardData.query}</p>
+        <div className="news-card__keyword-container">
+          <p className="news-card__keyword">{cardData.query}</p>
         </div>
       )}
     </div>

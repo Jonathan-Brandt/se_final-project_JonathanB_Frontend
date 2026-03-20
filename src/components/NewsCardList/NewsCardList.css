@@ -1,17 +1,15 @@
-.newscardlist-container {
+.news-card-list__container {
   width: 1440px;
   height: auto;
   background-color: #f5f6f7;
   overflow: visible;
   margin: 0 auto;
   padding-top: 80px;
-  padding-left: 40px;
 }
 
-.newscardlist__header {
+.news-card-list__header {
   width: 712px;
   height: 46px;
-
   font-family: "Roboto-Slab", sans-serif;
   font-size: 40px;
   font-weight: 400;
@@ -19,15 +17,23 @@
   padding: 0;
 }
 
-.newscardlist {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.news-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
   padding: 0;
-  display: grid;
   list-style: none;
-  gap: 8px;
+  column-gap: 8px;
+  row-gap: 8px;
+  margin-left: 104px;
 }
 
-.showmore__button {
+.news-card-list__item {
+  flex: 0 1 calc((100% - 16px) / 3);
+  max-width: 400px;
+}
+
+.news-card-list__show-more-button {
   width: 288px;
   height: 64px;
   margin-left: 576px;
@@ -41,23 +47,28 @@
   margin-bottom: 20px;
 }
 
-.showmore__button:hover {
+.news-card-list__show-more-button:hover {
   transition: 0.3s;
   background-color: #e8e8e8;
 }
 
 @media screen and (max-width: 768px) {
-  .newscardlist-container {
+  .news-card-list__container {
     width: 768px;
     height: 654px;
   }
 
-  .newscardlist {
+  .news-card-list {
     margin-bottom: 32px;
     margin-left: 0px;
   }
 
-  .newscardlist__header {
+  .news-card-list__item {
+    flex-basis: 224px;
+    max-width: 224px;
+  }
+
+  .news-card-list__header {
     width: 336px;
     height: 34px;
     font-size: 30px;
@@ -66,19 +77,19 @@
     margin-left: 40px;
   }
 
-  .showmore__button {
+  .news-card-list__show-more-button {
     margin-left: 272px;
     width: 240px;
     height: 56px;
   }
-  .newscardlist-expanded {
+  .news-card-list_expanded {
     width: 768px;
     height: 1140px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .newscardlist-container {
+  .news-card-list__container {
     width: 320px;
     max-height: 1568px;
     background-color: #f5f6f7;
@@ -87,22 +98,28 @@
     padding-bottom: 24px;
   }
 
-  .newscardlist__header {
+  .news-card-list__header {
     width: 288px;
     height: 34px;
     font-size: 30px;
     margin-top: 40px;
     margin-bottom: 50px;
-    margin-left: 16px;
+    margin-left: 50px;
   }
 
-  .newscardlist {
-    margin-left: 16px;
+  .news-card-list {
+    margin-left: 50px;
     padding: 0;
-    gap: 10px;
+    column-gap: 8px;
+    row-gap: 8px;
   }
 
-  .showmore__button {
+  .news-card-list__item {
+    flex-basis: 224px;
+    max-width: 224px;
+  }
+
+  .news-card-list__show-more-button {
     margin-left: 16px;
   }
 }

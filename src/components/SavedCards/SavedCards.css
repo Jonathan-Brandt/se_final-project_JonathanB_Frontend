@@ -1,14 +1,14 @@
-.saved-articles__top {
+.saved-articles {
   background-color: white;
 }
 
-.text__container {
+.saved-articles__text-container {
   width: 1440px;
   height: 294px;
   margin-left: 104px;
 }
 
-.saved-articles__header-txt {
+.saved-articles__header-text {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -28,14 +28,14 @@
   margin-bottom: 30px;
 }
 
-.saved-articles__kywrds-lst {
+.saved-articles__keywords-list {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
 }
 
-.keywords {
+.saved-articles__keywords {
   font-weight: bold;
 }
 
@@ -52,13 +52,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .text__container {
+  .saved-articles__text-container {
     width: 768px;
     height: 204px;
     margin-left: 40px;
   }
 
-  .saved-articles__header-txt {
+  .saved-articles__header-text {
     font-size: 14px;
   }
 
@@ -87,7 +87,7 @@
     padding-top: 24px;
   }
 
-  .saved-articles__header-txt {
+  .saved-articles__header-text {
     width: 288px;
     height: 24px;
     margin-bottom: 16px;
@@ -98,12 +98,12 @@
     width: 268px;
   }
 
-  .saved-articles__kywrds-lst {
+  .saved-articles__keywords-list {
     width: 288px;
     height: 48px;
   }
 
-  .text__container {
+  .saved-articles__text-container {
     margin-left: 16px;
     margin-bottom: 0;
     height: 250px;

@@ -238,7 +238,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__content">
-          {location.pathname === "/" && <div className="content__cover"></div>}
+          {location.pathname === "/" && <div className="page__cover"></div>}
           <Header
             onLoginClick={onLoginClick}
             onSignupClick={onSignupClick}

@@ -6,11 +6,11 @@ function About() {
     <>
       <section className="about-page">
         <div className="about-page__content">
-          <div className="author-img__container">
+          <div className="about-page__author-image-container">
             <img
               src={jb}
               alt="Image of Jonathan Brandt"
-              className="author__image"
+              className="about-page__author-image"
             />
           </div>
           <div className="about-page__text-container">

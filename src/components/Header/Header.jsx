@@ -22,12 +22,12 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
   return (
     <>
       {subMenuOpen && (
-        <div className="menu-content__cover">
-          <div className="mobile__menu">
+        <div className="header__mobile-overlay">
+          <div className="header__mobile-menu">
             <button
               onClick={toggleMenu}
               type="button"
-              className="menu__close"
+              className="header__mobile-close"
             ></button>
             {isSavedPage ? (
               <img src={logo} alt="header__logo" className="header__logo" />
@@ -35,7 +35,7 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
               <img src={logo} alt="header__logo" className="header__logo" />
             )}
 
-            <div className="mobile__btnn-container">
+            <div className="header__mobile-buttons">
               <button
                 className={`header__home-button ${
                   !isSavedPage ? "header__nav-active-light" : ""
@@ -61,7 +61,7 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
                 Signin
               </button>
             ) : (
-              <div className="signout__bttn-container">
+              <div className="header__signout-container">
                 <button className="header__signout-bttn" onClick={signout}>
                   {currentUser.firstName}
                   <img src={logoutWhite} alt="logout" className="logout-icon" />
@@ -71,7 +71,7 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
           </div>{" "}
         </div>
       )}
-      <header className={isSavedPage ? "header__saved" : "header"}>
+      <header className={isSavedPage ? "header_saved" : "header"}>
         {isSavedPage ? (
           <img src={logosaved} alt="header__logo" className="header__logo" />
         ) : (
@@ -94,7 +94,7 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
               className={
                 !isSavedPage
                   ? "header__saved-button"
-                  : "header__saved-bttn-svpg header__nav-active-dark"
+                  : "header__saved-button_saved header__nav-active-dark"
               }
               onClick={goToSaved}
             >
@@ -110,13 +110,15 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
             <div
               className={
                 !isSavedPage
-                  ? "signout__bttn-container"
-                  : "bttn-container__svpg"
+                  ? "header__signout-container"
+                  : "header__signout-container_saved"
               }
             >
               <button
                 className={
-                  !isSavedPage ? "header__signout-bttn" : "signout-bttn__svpg"
+                  !isSavedPage
+                    ? "header__signout-bttn"
+                    : "header__signout-button_saved"
                 }
                 onClick={signout}
               >

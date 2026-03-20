@@ -14,7 +14,7 @@ function Footer() {
           <p className="footer__home">
             <Link to="/">Home</Link>
           </p>
-          <p className="footer__TripleTen-link">
+          <p className="footer__tripleten-link">
             <a
               href="https://tripleten.com"
               target="_blank"
@@ -28,7 +28,11 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={ghLogo} alt="github Link" className="footer__ghLogo" />
+            <img
+              src={ghLogo}
+              alt="github Link"
+              className="footer__github-logo"
+            />
           </a>
 
           <a
@@ -39,7 +43,7 @@ function Footer() {
             <img
               src={lnkdInLogo}
               alt="LinkedIn Link"
-              className="footer__lnkdInLogo"
+              className="footer__linkedin-logo"
             />
           </a>
         </div>

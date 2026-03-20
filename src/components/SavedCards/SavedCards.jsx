@@ -12,15 +12,15 @@ function SavedCardsList({ savedCards, deleteCard, isLoggedIn }) {
 
   return (
     <>
-      <div className="saved-articles__top">
-        <div className="text__container">
-          <p className="saved-articles__header-txt">Saved articles</p>
+      <div className="saved-articles">
+        <div className="saved-articles__text-container">
+          <p className="saved-articles__header-text">Saved articles</p>
           <p className="saved-articles__txt">
             {currentUser.firstName}, you have {savedCards.length} saved articles
           </p>
-          <p className="saved-articles__kywrds-lst">
+          <p className="saved-articles__keywords-list">
             By keywords:
-            <span className="keywords"> {keywordsText}</span>
+            <span className="saved-articles__keywords"> {keywordsText}</span>
           </p>
         </div>
       </div>

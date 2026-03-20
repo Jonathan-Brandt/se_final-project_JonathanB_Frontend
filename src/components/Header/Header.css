@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.header__saved {
+.header_saved {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -94,7 +94,7 @@
   padding: 0;
 }
 
-.header__saved-bttn-svpg {
+.header__saved-button_saved {
   background: none;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -114,7 +114,7 @@
   text-decoration-thickness: 3px;
 }
 
-.signout__bttn-container {
+.header__signout-container {
   border: 1px solid white;
   border-radius: 30px;
   width: 112px;
@@ -123,7 +123,7 @@
   padding: 12px 19px 12px 19px;
 }
 
-.bttn-container__svpg {
+.header__signout-container_saved {
   border: 1px solid #1a1b22;
   border-radius: 30px;
   width: 112px;
@@ -151,7 +151,7 @@
   gap: 16px;
 }
 
-.signout-bttn__svpg {
+.header__signout-button_saved {
   height: 24px;
   background: none;
   border: none;
@@ -178,7 +178,7 @@
   transition: 0.3s;
 }
 
-.header__saved-bttn-svpg:hover,
+.header__saved-button_saved:hover,
 .header__home-svpg:hover,
 .header__signin-button-svpg:hover {
   opacity: 0.5;
@@ -198,7 +198,7 @@
   display: none;
 }
 
-.mobile__menu {
+.header__mobile-menu {
   max-height: 174px;
   width: 320px;
   background-color: #1a1b22;
@@ -208,31 +208,31 @@
   padding: 16px 16px 24px 16px;
 }
 
-.mobile__menu .header__signin-button {
+.header__mobile-menu .header__signin-button {
   width: 288px;
   height: 56px;
   display: inline;
 }
 
-.mobile__menu .header__signout-bttn,
-.mobile__menu .signout-bttn__svpg {
+.header__mobile-menu .header__signout-bttn,
+.header__mobile-menu .header__signout-button_saved {
   width: 288px;
   height: 56px;
   display: inline;
 }
 
-.mobile__menu .header__home-button,
-.mobile__menu .header__home-svpg {
+.header__mobile-menu .header__home-button,
+.header__mobile-menu .header__home-svpg {
   height: 56px;
   display: inline;
 }
 
-.mobile__menu .header__saved-button {
+.header__mobile-menu .header__saved-button {
   height: 56px;
   display: inline;
 }
 
-.menu__close {
+.header__mobile-close {
   position: absolute;
   background-image: url("../../assets/close.svg");
   background-color: transparent;
@@ -245,7 +245,7 @@
   margin-left: 260px;
 }
 
-.menu-content__cover {
+.header__mobile-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   z-index: 1;
@@ -254,7 +254,7 @@
   display: block;
 }
 
-.mobile__btnn-container {
+.header__mobile-buttons {
   height: 56px;
   display: flex;
   flex-direction: row;
@@ -264,7 +264,7 @@
 
 @media screen and (max-width: 768px) {
   .header,
-  .header__saved {
+  .header_saved {
     max-width: 100%;
     height: 66px;
     padding-left: 40px;
@@ -290,7 +290,7 @@
 
 @media screen and (max-width: 320px) {
   .header,
-  .header__saved {
+  .header_saved {
     max-width: 320px;
     max-height: 56px;
     gap: 136px;
@@ -313,14 +313,14 @@
   }
 
   .header__saved-button,
-  .header__saved-bttn-svpg,
-  .signout__bttn-container,
-  .bttn-container__svpg {
+  .header__saved-button_saved,
+  .header__signout-container,
+  .header__signout-container_saved {
     display: none;
   }
 
-  .mobile__menu .signout__bttn-container,
-  .mobile__menu .bttn-container__svpg {
+  .header__mobile-menu .header__signout-container,
+  .header__mobile-menu .header__signout-container_saved {
     display: block;
     width: 288px;
     height: 56px;
@@ -329,8 +329,8 @@
     box-sizing: border-box;
   }
 
-  .mobile__menu .header__signout-bttn,
-  .mobile__menu .signout-bttn__svpg {
+  .header__mobile-menu .header__signout-bttn,
+  .header__mobile-menu .header__signout-button_saved {
     width: 288px;
     height: 56px;
     display: flex;

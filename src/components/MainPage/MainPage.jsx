@@ -35,7 +35,11 @@ function MainPage({ handleSearch, query, setQuery }) {
               placeholder="Enter topic"
             />
             <button
-              className={!isFormFilled ? "search-inactive" : "search-button"}
+              className={
+                !isFormFilled
+                  ? "search-bar__button_disabled"
+                  : "search-bar__button"
+              }
               type="submit"
               disabled={!isFormFilled}
             >
