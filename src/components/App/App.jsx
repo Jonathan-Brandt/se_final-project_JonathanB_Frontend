@@ -51,7 +51,7 @@ function App() {
     return `${title}|${date}|${imageUrl}|${sourceName}`;
   };
 
-  // handlers
+  // handles
 
   const handleSaveCard = async (card) => {
     try {
