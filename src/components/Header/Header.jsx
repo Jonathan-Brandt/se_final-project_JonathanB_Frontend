@@ -21,56 +21,65 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
   const currentUser = useContext(CurrentUserContext);
   return (
     <>
-      {subMenuOpen && (
-        <div className="header__mobile-overlay">
-          <div className="header__mobile-menu">
-            <button
-              onClick={toggleMenu}
-              type="button"
-              className="header__mobile-close"
-            ></button>
-            {isSavedPage ? (
-              <img src={logo} alt="header__logo" className="header__logo" />
-            ) : (
-              <img src={logo} alt="header__logo" className="header__logo" />
-            )}
-
-            <div className="header__mobile-buttons">
+      <header className="header__mobile">
+        {subMenuOpen && (
+          <div className="header__mobile-overlay">
+            <div className="header__mobile-menu">
               <button
-                className={`header__home-button ${
-                  !isSavedPage ? "header__nav-active-light" : ""
-                }`}
-                onClick={goHome}
-              >
-                Home
-              </button>
-              {isLoggedIn && (
-                <button
-                  className={`header__saved-button ${
-                    isSavedPage ? "header__nav-active-light" : ""
-                  }`}
-                  onClick={goToSaved}
-                >
-                  Saved Articles
-                </button>
+                onClick={toggleMenu}
+                type="button"
+                className="header__mobile-close"
+              ></button>
+              {isSavedPage ? (
+                <img src={logo} alt="header__logo" className="header__logo" />
+              ) : (
+                <img src={logo} alt="header__logo" className="header__logo" />
               )}
-            </div>
 
-            {!isLoggedIn ? (
-              <button className="header__signin-button" onClick={onLoginClick}>
-                Signin
-              </button>
-            ) : (
-              <div className="header__signout-container">
-                <button className="header__signout-bttn" onClick={signout}>
-                  {currentUser.firstName}
-                  <img src={logoutWhite} alt="logout" className="logout-icon" />
+              <div className="header__mobile-buttons">
+                <button
+                  className={`header__home-button ${
+                    !isSavedPage ? "header__nav-active-light" : ""
+                  }`}
+                  onClick={goHome}
+                >
+                  Home
                 </button>
+                {isLoggedIn && (
+                  <button
+                    className={`header__saved-button ${
+                      isSavedPage ? "header__nav-active-light" : ""
+                    }`}
+                    onClick={goToSaved}
+                  >
+                    Saved Articles
+                  </button>
+                )}
               </div>
-            )}
-          </div>{" "}
-        </div>
-      )}
+
+              {!isLoggedIn ? (
+                <button
+                  className="header__signin-button"
+                  onClick={onLoginClick}
+                >
+                  Signin
+                </button>
+              ) : (
+                <div className="header__signout-container">
+                  <button className="header__signout-bttn" onClick={signout}>
+                    {currentUser.firstName}
+                    <img
+                      src={logoutWhite}
+                      alt="logout"
+                      className="logout-icon"
+                    />
+                  </button>
+                </div>
+              )}
+            </div>{" "}
+          </div>
+        )}
+      </header>
       <header className={isSavedPage ? "header_saved" : "header"}>
         {isSavedPage ? (
           <img src={logosaved} alt="header__logo" className="header__logo" />

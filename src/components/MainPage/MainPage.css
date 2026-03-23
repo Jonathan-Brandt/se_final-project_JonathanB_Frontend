@@ -30,7 +30,7 @@
   position: relative;
 }
 
-.search-bar__container {
+.main-page__search-bar__container {
   max-height: 64px;
   width: 608px;
   color: #b6bcbf;
@@ -117,7 +117,7 @@
     position: relative;
   }
 
-  .search-bar__container {
+  .main-page__search-bar__container {
     width: 448px;
   }
 
@@ -159,7 +159,7 @@
     height: 72px;
   }
 
-  .search-bar__container {
+  .main-page__search-bar__container {
     display: flex;
     flex-direction: column;
     width: 288px;

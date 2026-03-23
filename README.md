@@ -6,4 +6,4 @@ https://jonathan-brandt.github.io/se_final-project_JonathanB_Frontend/
 
 ## Project pitch video where I describe the application and the development process. Link bleow
 
-https://www.loom.com/share/50f4435937174070be1d3c4dfb12f66d
+https://www.loom.com/share/969df222b5e24f7099cc02dfdb0d52bb

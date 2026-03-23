@@ -25,7 +25,7 @@ function MainPage({ handleSearch, query, setQuery }) {
           Find the latest new on any topic and save them to your personal
           account
         </p>
-        <div className="search-bar__container">
+        <div className="main-page__search-bar__container">
           <form onSubmit={onSearchSubmit} className="search-bar">
             <input
               type="text"

@@ -155,7 +155,7 @@
 @media screen and (max-width: 320px) {
   .modal {
     top: 0;
-    left: -32px;
+    left: 0;
     right: 0;
     bottom: 0;
   }
@@ -165,7 +165,8 @@
     padding: 16px 16px 16px;
   }
 
-  .modal__submit {
+  .modal__submit,
+  .modal__submit_active {
     width: 288px;
   }
 
