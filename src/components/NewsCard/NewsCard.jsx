@@ -56,8 +56,8 @@ function NewsCard({
   );
 
   return (
-    <div className="news-card__wrapper">
-      <div className="news-card">
+    <div className="news-card">
+      <div className="news-card__wrapper">
         <div className="news-card__img-container">
           <img
             src={cardImg}

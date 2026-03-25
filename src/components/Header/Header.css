@@ -173,14 +173,16 @@
 .header__home-button:hover,
 .header__signin-button:hover,
 .header__signout-bttn:hover,
-.header__saved-button:hover {
+.header__saved-button:hover,
+.header__signout-container:hover {
   opacity: 0.5;
   transition: 0.3s;
 }
 
 .header__saved-button_saved:hover,
 .header__home-svpg:hover,
-.header__signin-button-svpg:hover {
+.header__signout-button_saved:hover,
+.header__signout-container_saved:hover {
   opacity: 0.5;
   transition: 0.3s;
 }
@@ -198,14 +200,24 @@
   display: none;
 }
 
+.header__mobile {
+  display: none;
+  transition: 0.3s;
+}
+
+.header__mobile-active {
+  display: block;
+  transition: 0.3s;
+}
+
 .header__mobile-menu {
   max-height: 174px;
   width: 320px;
   background-color: #1a1b22;
   position: absolute;
   z-index: 2;
-  transition: 0.3s;
   padding: 16px 16px 24px 16px;
+  animation: mobile-menu-open 0.3s ease;
 }
 
 .header__mobile-menu .header__signin-button {
@@ -252,6 +264,27 @@
   width: 100%;
   height: 100vh;
   display: inline;
+  animation: mobile-overlay-fade-in 0.3s ease;
+}
+
+@keyframes mobile-overlay-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-menu-open {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .header__mobile-buttons {

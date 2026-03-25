@@ -21,7 +21,11 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
   const currentUser = useContext(CurrentUserContext);
   return (
     <>
-      <header className="header__mobile">
+      <header
+        className={
+          !subMenuOpen ? "header header__mobile" : "header__mobile-active"
+        }
+      >
         {subMenuOpen && (
           <div className="header__mobile-overlay">
             <div className="header__mobile-menu">
@@ -31,7 +35,11 @@ function Header({ onLoginClick, goToSaved, goHome, isLoggedIn, signout }) {
                 className="header__mobile-close"
               ></button>
               {isSavedPage ? (
-                <img src={logo} alt="header__logo" className="header__logo" />
+                <img
+                  src={logo}
+                  alt="header__logo"
+                  className="header__logo header__logo-submenu"
+                />
               ) : (
                 <img src={logo} alt="header__logo" className="header__logo" />
               )}

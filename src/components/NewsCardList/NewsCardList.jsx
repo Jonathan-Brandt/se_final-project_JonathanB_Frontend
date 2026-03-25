@@ -12,9 +12,9 @@ function NewsCardList({
 }) {
   return (
     <>
-      <div className="news-card-list__container ">
+      <div className="news-card-list ">
         <h1 className="news-card-list__header">Search results</h1>
-        <ul className="news-card-list">
+        <ul className="news-card-list__container">
           {newsData.slice(0, cardLimit).map((newsData, index) => (
             <li className="news-card-list__item" key={index}>
               <NewsCard
