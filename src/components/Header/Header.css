@@ -82,6 +82,7 @@
 }
 
 .header__saved-button {
+  width: 200px;
   background: none;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -91,7 +92,8 @@
   height: 24px;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding-left: 8px;
+  text-align: left;
 }
 
 .header__saved-button_saved {
@@ -105,6 +107,8 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  text-align: left;
+  padding-left: 8px;
 }
 
 .header__nav-active-light,
@@ -244,6 +248,11 @@
   display: inline;
 }
 
+.header__mobile-menu .header__nav-active-light,
+.header__mobile-menu .header__nav-active-dark {
+  text-underline-offset: 8px;
+}
+
 .header__mobile-close {
   position: absolute;
   background-image: url("../../assets/close.svg");
@@ -288,11 +297,11 @@
 }
 
 .header__mobile-buttons {
-  height: 56px;
+  height: 40px;
   display: flex;
-  flex-direction: row;
-  margin-bottom: 22px;
-  gap: 60px;
+  flex-direction: column;
+  margin-bottom: 30px;
+  gap: 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -355,7 +364,7 @@
   .header__mobile-menu .header__signout-container,
   .header__mobile-menu .header__signout-container_saved {
     display: block;
-    width: 288px;
+    width: 170px;
     height: 56px;
     max-height: none;
     padding: 0;

@@ -81,6 +81,7 @@
 
   .saved-articles__list {
     width: 320px;
+    min-height: 500px;
     max-height: auto;
     padding-left: 0;
     padding-bottom: 13px;

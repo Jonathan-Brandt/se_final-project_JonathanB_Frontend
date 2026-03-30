@@ -1,7 +1,7 @@
 import "./Footer.css";
 import { Link } from "react-router-dom";
-import ghLogo from "../../assets/github.png";
-import lnkdInLogo from "../../assets/LinkedIn.png";
+import ghLogo from "../../assets/github-logo.svg";
+import lnkdInLogo from "../../assets/LinkedIn-logo.svg";
 
 function Footer() {
   return (

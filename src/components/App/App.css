@@ -10,6 +10,7 @@
 
 .page__content {
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .page__cover {

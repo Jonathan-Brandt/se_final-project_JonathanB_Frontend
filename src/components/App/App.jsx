@@ -236,74 +236,77 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <div className="page__content">
-          {location.pathname === "/" && <div className="page__cover"></div>}
-          <Header
-            onLoginClick={onLoginClick}
-            onSignupClick={onSignupClick}
-            goToSaved={goToSaved}
-            goHome={goHome}
-            isLoggedIn={isLoggedIn}
-            signout={handleLogout}
-          />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MainPage
-                  handleSearch={handleSearch}
-                  query={query}
-                  setQuery={setQuery}
-                />
-              }
+      <main>
+        <div className="page">
+          <div className="page__content">
+            {location.pathname === "/" && <div className="page__cover"></div>}
+            <Header
+              onLoginClick={onLoginClick}
+              onSignupClick={onSignupClick}
+              goToSaved={goToSaved}
+              goHome={goHome}
+              isLoggedIn={isLoggedIn}
+              signout={handleLogout}
             />
-            <Route
-              path="/saved"
-              element={
-                <SavedCardsList
-                  savedCards={savedCards}
-                  deleteCard={handleDeleteCard}
-                  isLoggedIn={isLoggedIn}
-                />
-              }
-            />
-          </Routes>
-          {location.pathname === "/" &&
-            (loading ? (
-              <PreLoader isLoading={loading} />
-            ) : (
-              <NewsCardList
-                cardLimit={cardLimit}
-                newsData={newsData}
-                showMore={showMore}
-                cardPageSize={cardPageSize}
-                onSaveCard={handleSaveCard}
-                isSaved={isSaved}
-                savedCards={savedCards}
-                isLoggedIn={isLoggedIn}
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <MainPage
+                    handleSearch={handleSearch}
+                    query={query}
+                    setQuery={setQuery}
+                  />
+                }
               />
-            ))}
-          {location.pathname === "/" && <About />}
-          <Footer></Footer>{" "}
+              <Route
+                path="/saved"
+                element={
+                  <SavedCardsList
+                    savedCards={savedCards}
+                    deleteCard={handleDeleteCard}
+                    isLoggedIn={isLoggedIn}
+                  />
+                }
+              />
+            </Routes>
+            {location.pathname === "/" &&
+              (loading ? (
+                <PreLoader isLoading={loading} />
+              ) : (
+                <section>
+                  <NewsCardList
+                    cardLimit={cardLimit}
+                    newsData={newsData}
+                    showMore={showMore}
+                    cardPageSize={cardPageSize}
+                    onSaveCard={handleSaveCard}
+                    isSaved={isSaved}
+                    savedCards={savedCards}
+                    isLoggedIn={isLoggedIn}
+                  />
+                </section>
+              ))}
+            {location.pathname === "/" && <About />}
+            <Footer></Footer>{" "}
+          </div>
         </div>
-        <LoginModal
-          activeModal={activeModal}
-          isOpen={activeModal === "login-user"}
-          loginClick={onLoginClick}
-          onSecondButtonClick={onSecondButtonClick}
-          closeModal={closeModal}
-          onLoginModalSubmit={handleLogin}
-        />
-
-        <RegisterModal
-          activeModal={activeModal}
-          isOpen={activeModal === "new-user"}
-          registerClickClick={onSignupClick}
-          onSecondButtonClick={onSecondButtonClick}
-          closeModal={closeModal}
-        />
-      </div>
+      </main>{" "}
+      <LoginModal
+        activeModal={activeModal}
+        isOpen={activeModal === "login-user"}
+        loginClick={onLoginClick}
+        onSecondButtonClick={onSecondButtonClick}
+        closeModal={closeModal}
+        onLoginModalSubmit={handleLogin}
+      />
+      <RegisterModal
+        activeModal={activeModal}
+        isOpen={activeModal === "new-user"}
+        registerClickClick={onSignupClick}
+        onSecondButtonClick={onSecondButtonClick}
+        closeModal={closeModal}
+      />
     </CurrentUserContext.Provider>
   );
 }
