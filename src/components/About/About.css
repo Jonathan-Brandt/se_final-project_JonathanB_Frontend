@@ -1,0 +1,124 @@
+.about-page {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  max-height: 624px;
+  padding-top: 80px;
+}
+
+.about-page__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-page__text-container {
+  margin-right: 216px;
+}
+
+.about-page__author-image-container {
+  display: flex;
+  height: 400px;
+  width: 400px;
+  border-radius: 1000px;
+  overflow: hidden;
+  margin-right: 56px;
+  margin-bottom: 80px;
+  justify-content: center;
+}
+
+.about-page__author-image {
+  height: 464px;
+  width: 464px;
+}
+
+.about-page__header {
+  width: 600px;
+  height: 46px;
+  font-family: "Roboto-Slab", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.about-page__subtext {
+  width: 600px;
+  height: 120px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-page {
+    width: 768px;
+    height: 354px;
+  }
+
+  .about-page__author-image-container {
+    height: 232px;
+    width: 232px;
+    margin-right: 32px;
+    margin-left: 240px;
+  }
+
+  .about-page__author-image {
+    height: 232px;
+    width: 232px;
+  }
+
+  .about-page__header {
+    width: 424px;
+    height: 34px;
+    font-size: 30px;
+  }
+
+  .about-page__subtext {
+    width: 424px;
+    height: 168px;
+    overflow: hidden;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-page {
+    width: 320px;
+    height: 752px;
+    padding: 0;
+  }
+
+  .about-page__content {
+    width: 320px;
+    height: 752px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+  }
+
+  .about-page__author-image-container {
+    width: 272px;
+    height: 272px;
+    margin-top: 32px;
+    margin-left: 16px;
+    margin-bottom: 0;
+  }
+
+  .about-page__author-image {
+    width: 272px;
+    height: 272px;
+  }
+
+  .about-page__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-page__subtext {
+    width: 288px;
+    height: 240px;
+    overflow: hidden;
+    font-size: 18px;
+  }
+}

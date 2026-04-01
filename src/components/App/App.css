@@ -1,0 +1,45 @@
+.page {
+  background-image: url("../../assets/main-page__backgroundImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  max-height: 576px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.page__content {
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.page__cover {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 1440px;
+  height: 576px;
+}
+
+@media screen and (max-width: 768px) {
+  .page {
+    width: 100%;
+    height: 400px;
+  }
+
+  .page__cover {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .page {
+    width: 100%;
+    height: 538px;
+  }
+
+  .page__cover {
+    width: 100%;
+    height: 536px;
+  }
+}
