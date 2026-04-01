@@ -39,6 +39,9 @@ function App() {
 
   const [query, setQuery] = useState("");
 
+  const [searchError, setSearchError] = useState("");
+  const [hasSubmittedSearch, setHasSubmittedSearch] = useState(false);
+
   const getSourceName = (source) =>
     typeof source === "string" ? source : source?.name || "";
 
@@ -115,7 +118,9 @@ function App() {
   };
 
   const handleSearch = (query) => {
+    setSearchError("");
     getNewsData(query);
+    setHasSubmittedSearch(true);
   };
 
   const showMore = () => {
@@ -138,18 +143,22 @@ function App() {
 
   async function getNewsData(query = "news") {
     setLoading(true);
+    setSearchError("");
     try {
       const resp = await getNewsArticles(query);
+      const articles = Array.isArray(resp?.articles) ? resp.articles : [];
       setNewsData(resp.articles);
       setHasFetched(true);
     } catch (error) {
       console.log(
         "sorry, something went wrong during the request. There may be a connection issue or the server may be down. Please try again later.",
       );
+      setNewsData([]);
+      setSearchError("Sorry, but nothing matched your search terms.");
       setHasFetched(true);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   async function handleLogin({ email, password }) {
@@ -232,6 +241,15 @@ function App() {
     };
   }, [activeModal]);
 
+  const searchedQuery = query.trim().length > 0;
+  const noSearchResults =
+    hasFetched &&
+    !loading &&
+    searchedQuery &&
+    Array.isArray(newsData) &&
+    newsData.length === 0 &&
+    !searchError;
+
   //main content
 
   return (
@@ -270,23 +288,29 @@ function App() {
                 }
               />
             </Routes>
-            {location.pathname === "/" &&
-              (loading ? (
-                <PreLoader isLoading={loading} />
-              ) : (
-                <section>
-                  <NewsCardList
-                    cardLimit={cardLimit}
-                    newsData={newsData}
-                    showMore={showMore}
-                    cardPageSize={cardPageSize}
-                    onSaveCard={handleSaveCard}
-                    isSaved={isSaved}
-                    savedCards={savedCards}
-                    isLoggedIn={isLoggedIn}
-                  />
-                </section>
-              ))}
+            {location.pathname === "/" && loading && hasSubmittedSearch && (
+              <PreLoader isLoading={loading} />
+            )}
+            {location.pathname === "/" && (
+              <section>
+                <NewsCardList
+                  cardLimit={cardLimit}
+                  newsData={newsData}
+                  showMore={showMore}
+                  cardPageSize={cardPageSize}
+                  onSaveCard={handleSaveCard}
+                  isSaved={isSaved}
+                  savedCards={savedCards}
+                  isLoggedIn={isLoggedIn}
+                  noSearchResults={noSearchResults}
+                  searchError={searchError}
+                  query={query}
+                  hasSubmittedSearch={hasSubmittedSearch}
+                  loading={loading}
+                  hasFetched={hasFetched}
+                />
+              </section>
+            )}
             {location.pathname === "/" && <About />}
             <Footer></Footer>{" "}
           </div>
